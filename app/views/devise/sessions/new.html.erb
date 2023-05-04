@@ -1,0 +1,45 @@
+<section class="background-radial-gradient overflow-hidden">
+  <header class="loginHeader" >
+    <br>
+    <div class="container px-5">
+    <div class="loginLogo"><img src="https://content.reelapps.io/static/media/LOGO.c4ba0a75af69c59a6576.png" width="250" height="40">
+    </div>
+  </div>
+  </header>
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+  <div class="row gx-lg-5 align-items-center mb-5">
+    <div class="col-lg-7 mb-5 mb-lg-0" style="z-index: 10">
+      <h1 class="my-2 display-5 fw-bold ls-tight text-center" style="color: #e1a6ff; font-size: 55px">
+        Welcome <span style="color: white">Back!</span>
+      </h1>
+      <p class="mb-2 text-center" style="color: #fff; font-size: 15px; font-family:Sans-serif">
+        Create Incredible Videos On Scale Using AI & Just a Keyword! Dominate Your  </p> <p class ="text-center" style="color: #fff; font-size: 15px; font-family:Sans-serif"> Niche With Short Engaging Videos!</p>
+    </div>
+    <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
+      <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+      <div id="radius-shape-2" class="position-absolute shadow-5-strong" ></div>
+      <div class="card bg-glass row rounded" style="border-radius:2.25rem!important;   border: 4px solid white;">
+        <div class="card-body px-2 py-5 px-md-5 rounded" >
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <h4 class="mb-3" style="color: #e1a6ff">Login <span style="color: white"> to Your Account Now</span></h4>
+            <!-- Email input -->
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-outline mb-4">
+                <label class="form-label" style="color: white" for="form3Example3cg">Email Address</label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" style="color: white" for="form3Example3cg" style="align-items: flex-start">Password</label>
+                <%= f.password_field :password, autocomplete: "current-password", class:"form-control " %>
+              </div>
+              <!-- Checkbox -->
+              <%= f.submit "Sign in ContentReel", class:"btn rounded-pill btn-lg btn-block btn-change7" %>
+              <hr class="my-4">
+            <%= render "devise/shared/links"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

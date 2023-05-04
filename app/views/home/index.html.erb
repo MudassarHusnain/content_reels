@@ -1,0 +1,21 @@
+
+<% if user_signed_in? %>
+  <div> Welcome <%= current_user.email %> </div>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+<% end %>
+<h1>Hello DigitalOcean!</h1>
+
+<%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
+
+
+<!--<script>-->
+
+<!--    $('#download-form').submit(function() {-->
+<!--        // GET THE VARS-->
+<!--        $.ajax({-->
+<!--            url: "/download",-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
