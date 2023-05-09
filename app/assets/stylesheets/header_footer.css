@@ -1,3 +1,4 @@
+@import "bootstrap";
 .footer-dark {
     color:#f0f9ff;
     background-color:black;
@@ -101,4 +102,8 @@
     .display-1 {
         font-size: 10rem;
     }
+}
+
+.text-color{
+    color: white;
 }

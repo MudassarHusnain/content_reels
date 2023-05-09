@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   root "home#index"
   get 'text_to_speech', to: 'text_to_speech#text_to_speech'
   get 'text_to_speech/index'
-  devise_for :users
-
+  get 'integration', to: 'integration#index'
+  get 'fb_integration', to: 'integration#create'
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
+  get '/auth/facebook/callback', to: 'integration#facebook_callback'
 end

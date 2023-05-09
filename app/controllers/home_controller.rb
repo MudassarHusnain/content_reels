@@ -1,5 +1,4 @@
 
-require 'espeak'
 require 'byebug'
 
 class HomeController < ApplicationController

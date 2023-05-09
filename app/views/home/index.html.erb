@@ -1,4 +1,6 @@
-
+<div class="container">
+  <br>
+  <br><br><br><br><br>
 <% if user_signed_in? %>
   <div> Welcome <%= current_user.email %> </div>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
@@ -9,7 +11,11 @@
 
 <%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
 
-
+</div>
+<br>
+<br><br><br><br><br>  <br>
+<br><br><br><br><br>  <br>
+<br><br><br>
 <!--<script>-->
 
 <!--    $('#download-form').submit(function() {-->

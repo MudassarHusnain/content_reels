@@ -75,4 +75,9 @@ end
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap', '~> 5.0.2'
 gem 'httparty'
+gem 'koala'
+gem 'omniauth', '~> 1.9'
+# gem "omniauth-rails_csrf_protection"
+gem 'omniauth-facebook', '~> 8.0'
+gem 'activerecord-session_store'
 

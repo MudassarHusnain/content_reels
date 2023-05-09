@@ -7,16 +7,14 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
+  config.web_console.whitelisted_ips = '10.28.85.59'
   # Do not eager load code on boot.
   config.eager_load = false
 
   # Show full error reports.
   config.consider_all_requests_local = true
-
   # Enable server timing
   config.server_timing = true
-
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
@@ -35,6 +33,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  # config.web_console.whitelisted_ips = '10.28.85.59'
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
