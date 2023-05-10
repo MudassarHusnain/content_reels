@@ -1,0 +1,47 @@
+<%if(@project.reels.count==0) %>
+  <%=render partial: 'reels/form',locals: { reel: @project.reels.new} %>
+
+<%else %>
+      <div class="wrapper">
+
+        <div class="container">
+
+          <div class="row g-1">
+
+            <div>
+
+              <div class="col-md-3">
+
+                <div class="card p-3">
+
+                  <div class="text-center">
+
+                    <h1 class="content-reel">Content Reel</h1>
+
+                  </div>
+
+                  <div class="product-details">
+                    <%=@project.name%>
+                    <br/>
+                    <%= link_to "Edit",reels_path(@project),class:'btn btn-dark' %>
+                    <%= link_to "Delete", @project, data: { turbo_method: :delete }, class: 'btn btn-danger'%>
+                    <%#= button_to "Delete1",project,method: :delete,class:'btn btn-danger' %>
+
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+<%end %>

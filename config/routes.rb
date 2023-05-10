@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_scope :user do
     # Redirests signing out users back to sign-in
     # get "users", to: "devise/sessions#new"
@@ -10,5 +11,7 @@ Rails.application.routes.draw do
   get 'text_to_speech', to: 'text_to_speech#text_to_speech'
   get 'text_to_speech/index'
   devise_for :users
-
+  resources 'projects'
+  resources 'reels'
+  # delete 'projects/destroy/:id',to: "projects#destroy"
 end
