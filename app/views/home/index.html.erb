@@ -1,19 +1,25 @@
 
-<% if user_signed_in? %>
-  <div> Welcome <%= current_user.email %> </div>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-<% end %>
-<h1>Hello DigitalOcean!</h1>
-<%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
-<%= render "projects/form",project:Project.new,class: 'position-relative'%>
-<!-- Page Content -->
-<section class="py-5">
-  <div class="container">
-    <h1 class="fw-light">Half Page Image Slider</h1>
-    <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images
-      in this snippet are from <a href="https://unsplash.com">Unsplash</a>!</p>
+<div class="video-background">
+  <video autoplay muted loop>
+    <source src="https://reeelapps-app.s3.us-west-2.amazonaws.com/content_reel_bg+-video-2+(720p).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+  <div class="content">
+          <% if user_signed_in? %>
+            <div> Welcome <%= current_user.email %> </div>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
+          <h1>Hello DigitalOcean!</h1>
+          <%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
+          <%= render "projects/form",project:Project.new,class: 'position-relative'%>
+          <%= link_to 'View Projects',projects_path,class:'btn btn-lg btn-primary position-absolute top-5 end-0 mt-10 me-5 project-view',style: 'width: 25%;
+              height: 8%;
+              font-size: 30px ;margin-top:7%;' %>
   </div>
-</section>
+</div>
+<!-- Page Content -->
+
 
