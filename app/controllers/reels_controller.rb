@@ -16,7 +16,7 @@ class ReelsController < ApplicationController
 
   def new
 
-    @project = Project.find_by(params[:project_id])
+    @project = Project.find(params[:project_id])
     @reel = @project.reels.new
     # debugger
   end
