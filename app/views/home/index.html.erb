@@ -6,12 +6,8 @@
   <%= link_to "Sign in", new_user_session_path %>
 <% end %>
 <h1>Hello DigitalOcean!</h1>
-
 <%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
-
-  <%= render "projects/form",project:Project.new,class: 'position-relative'%>
-
-<%#= render 'home/navbar' %>
+<%= render "projects/form",project:Project.new,class: 'position-relative'%>
 <!-- Page Content -->
 <section class="py-5">
   <div class="container">
@@ -21,12 +17,3 @@
   </div>
 </section>
 
-<!--<script>-->
-
-<!--    $('#download-form').submit(function() {-->
-<!--        // GET THE VARS-->
-<!--        $.ajax({-->
-<!--            url: "/download",-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->

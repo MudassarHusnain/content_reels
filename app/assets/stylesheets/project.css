@@ -174,3 +174,15 @@ html, body {
 .valid-feedback{
     color: #2acc80;
 }
+.image-container{
+    height: 100px;
+}
+.col-sm-3{
+    height: 10%;
+}
+.fa-plus{
+    font-size: 270px;
+}
+.col-md-3{
+    /*height: 400px;*/
+}

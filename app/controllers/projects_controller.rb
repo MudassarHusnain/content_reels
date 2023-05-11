@@ -1,25 +1,20 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
     before_action :set_project, only: %i[ show edit update destroy ]
-
   def index
-    @projects=Project.all
+    @projects = Project.all
   end
-
   def new
-    @project=Project.new
+    @project = Project.new
   end
 
   def create
-    @project=Project.new(project_params)
-
+    @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
-
       else
         format.html { render :new, status: :unprocessable_entity }
-
       end
     end
   end
@@ -28,7 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project=Project.find_by(id:params[:id])
+    @project = Project.find_by(id:params[:id])
   end
 
   def update
@@ -42,20 +37,22 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
   def destroy
     @project.destroy
-
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
       format.json { head :no_content }
     end
   end
-  private
- def set_project
-      @project = Project.find(params[:id])
-    end
-  def project_params
-          params.require(:project).permit(:name, :user_id)
 
-  end
+  private
+
+     def set_project
+          @project = Project.find(params[:id])
+     end
+      def project_params
+              params.require(:project).permit(:name, :user_id)
+
+      end
 end

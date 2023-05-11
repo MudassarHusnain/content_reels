@@ -2,7 +2,7 @@
   <%=render partial: 'reels/form',locals: { reel: @project.reels.new} %>
 
 <%else %>
-      <div class="wrapper">
+      <div class="wrapper mt-5">
 
         <div class="container">
 
@@ -23,25 +23,13 @@
                   <div class="product-details">
                     <%=@project.name%>
                     <br/>
-                    <%= link_to "Edit",reels_path(@project),class:'btn btn-dark' %>
+                    <%= link_to "Edit",reels_path(project_id:@project.id),class:'btn btn-dark' %>
                     <%= link_to "Delete", @project, data: { turbo_method: :delete }, class: 'btn btn-danger'%>
-                    <%#= button_to "Delete1",project,method: :delete,class:'btn btn-danger' %>
-
-
                   </div>
-
                 </div>
-
-
-
               </div>
-
-
             </div>
           </div>
-
         </div>
-
-
       </div>
 <%end %>

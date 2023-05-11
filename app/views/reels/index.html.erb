@@ -1,49 +1,42 @@
-
-
-
-
-<div class="wrapper">
-
-
+<div class="wrapper mt-5">
   <div class="container">
-
     <div class="row g-1">
-
-      <div>
-        <%@reels.each do|reel| %>
-
-          <div class="col-md-3">
-
-            <div class="card p-3">
-
-              <div class="text-center">
-
-                <h1 class="content-reel">Content Reel</h1>
-
-              </div>
-
-              <div class="product-details">
-                <%=reel.video_set%>
-                <br/>
-                <%= link_to "Edit",reel_path(reel),class:'btn btn-dark' %>
-                <%= link_to "Delete", reel, data: { turbo_method: :delete }, class: 'btn btn-danger'%>
-                <%#= button_to "Delete1",project,method: :delete,class:'btn btn-danger' %>
-
-
-              </div>
-
-            </div>
+                    <%@reels.each do|reel| %>
+                            <div class="col-md-3 ms-5">
+                                  <div class="card p-3">
+                                      <div class="text-center">
+                                        <h1 class="content-reel">Content Reel</h1>
+                                      </div>
+                                      <div class="product-details">
+                                        <%=reel.video_set%>
+                                        <br/>
+                                        <%= link_to "Edit",reel_path(reel),class:'btn btn-dark' %>
+                                        <%= link_to "Delete", reel, data: { turbo_method: :delete }, class: 'btn btn-danger'%>
+                                      </div>
+                                  </div>
+                            </div>
+                    <%end %>
+                    <div class="col-md-3 ms-5">
+                              <div class="card p-3">
+                                <%= link_to new_reel_path(product_id:@project.id) do %>
+                                  <i class="fas fa-plus ms-3 "></i>
+                                <%end %>
+                              </div>
+                    </div>
+    </div>
 
 
-
-          </div>
-
-
-          </div>
-        <%end %>
-        </div>
 
   </div>
 
 
 </div>
+
+
+
+
+
+
+
+
+
