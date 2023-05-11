@@ -1,6 +1,8 @@
 class IntegrationController < ApplicationController
   require 'httparty'
   APP_ID = '1295326561066235'
+  # APP_ID = '581414277415548'
+  # APP_SECRET = '3729e18af2fd1f6740a474651a0434a7'
   APP_SECRET = '579664d4eac2617e0429da4ea9b0dfca'
   # curl -i -X GET "https://graph.facebook.com/debug_token?input_token=AQB8gY9tKhnsDkzpBdKBwc9FL0drX1WMKNdp4Q8u88qYTtrNc4PXXMpFh4CEMUgL5VrlEWmZlOUw9-HXdc7_GM9ZKfqAZ5KAA98_InVLVaRj72eohv1BwGMOMtyLpO40YNOjwe3odXOuM5WE8lkFIhvATCoR9j1iJVCcWXRrSuIhfdqx_5TgHoh2ppWmEgaNMTAOWqUFA50Z_17apMBT4TA2Z7IhM-xNAPMmrOH49uCam3v16vGvOmtHUd0FjDcCltme6mFIpU20DiI3sgMjJqjg_E2OXiKgs3Aw1DK7KygY8xLZtWfEV92lNBYC8K4vgOUr6PTJ4QVyAc9nY-kH32AcrizvVLf0EOnkeX5-89azrGpwrVGnoEk3fjTm9PCfWc8&access_token=EAANlyZCZCgMJsBAPZAVezZCA5y1Gz5ZBZBf9nes3PDOChq6mxS0pO32KZB2WBcooEXjPZAIYYJ7Wf4fAe75bMBsX1u50uplZBSoDF8uJuZBd7pf2BZCEqoWO9JE580yYMvjbywIFS4dZAPFOEb4mxhIPGRmc2gnlPZAvWuZAoKJuRioNnaj8bE3azzRwxZBikCbu7Ha9yQEShJU84votU6jszNfpOVehTjMBZBXoZC8slEloZAA2UR6EmbDX7VaZB6M"
   # curl -i -X GET "https://graph.facebook.com/me/accounts?type=page&access_token=EAALFmNPM8dABAEZAS9aUGlVM6NhnaAdcFiR7A1tI8xHwrM62FBvrpsJ31Ogy0nlHVplISvOgzZCR8THyhbSHDsZBOsk7ponH53zDrc9W5wsZAtQUTmbq1Okmc1FiZBeWvjd69wsAd452ZBku6ZAZAY7FKS1jmZBUFLxPwlEolvSq4qbtQd8HS7EfeMKl4WDnzwWph9yIPPv0A5d9E3c7FLUOZB"
@@ -9,7 +11,6 @@ class IntegrationController < ApplicationController
   def index
   end
   def create
-
     login_url = "https://www.facebook.com/v2.3/dialog/oauth?client_id=1295326561066235&redirect_uri=http://localhost:3000/auth/facebook/callback&scope=email"
     redirect_to login_url, allow_other_host: true
     puts response.body
@@ -71,9 +72,8 @@ class IntegrationController < ApplicationController
     group_id = "617862747041464"
     access_token = access_token
 
-    url = "https://graph.facebook.com/v13.0/groups/feed?access_token=#{access_token}"
+    url = "https://graph.facebook.com/v16.0/me/groups?access_token=#{access_token}"
     response = HTTParty.get(url)
-
       posts = JSON.parse(response.body)['data']
     puts posts
   end
