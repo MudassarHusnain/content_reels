@@ -36,10 +36,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-/*html, body {*/
-/*!*    height: 100%;*!*/
-/*    background-color: #152733;*/
-/*}*/
+html, body {
+/*    height: 100%;*/
+    background-color: #152733;
+}
 .project-listing{
         background-color: #152733;
 }
