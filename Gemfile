@@ -72,6 +72,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'jquery-rails'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap', '~> 5.0.2'
 gem 'httparty'
@@ -80,4 +81,6 @@ gem 'omniauth', '~> 1.9'
 # gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook', '~> 8.0'
 gem 'activerecord-session_store'
-
+gem 'font-awesome-sass', '~> 4.7'
+gem 'sass-rails', '~> 6.0.0'
+gem 'sassc'

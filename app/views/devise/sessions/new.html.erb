@@ -21,21 +21,23 @@
       <div class="card bg-glass row rounded" style="border-radius:2.25rem!important;   border: 4px solid white;">
         <div class="card-body px-2 py-5 px-md-5 rounded" >
             <!-- 2 column grid layout with text inputs for the first and last names -->
-            <h4 class="mb-3" style="color: #e1a6ff">Login <span style="color: white"> to Your Account Now</span></h4>
+            <h4 class="mb-3" style="color: #e1a6ff; float: left">Login <span style="color: white"> to Your Account Now</span></h4>
             <!-- Email input -->
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-outline mb-4">
-                <label class="form-label" style="color: white" for="form3Example3cg">Email Address</label>
+                <label class="form-label login_form_style" for="form3Example3cg">Email Address</label>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
               </div>
               <div class="form-outline mb-4">
-                <label class="form-label" style="color: white" for="form3Example3cg" style="align-items: flex-start">Password</label>
+                <label class="form-label login_form_style" for="form3Example3cg" style="align-items: flex-start">Password</label>
                 <%= f.password_field :password, autocomplete: "current-password", class:"form-control " %>
               </div>
               <!-- Checkbox -->
-              <%= f.submit "Sign in ContentReel", class:"btn rounded-pill btn-lg btn-block btn-change7" %>
+              <%= f.submit "Sign in ContentReel", class:"btn rounded-pill btn-lg btn-block social_connect_button" %>
               <hr class="my-4">
+            <div style="text-align: start">
             <%= render "devise/shared/links"%>
+            </div>
         <% end %>
           </div>
         </div>

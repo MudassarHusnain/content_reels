@@ -39,7 +39,8 @@
     background: rgba(0,0,0,.6) !important;
     backdrop-filter: saturate(200%) blur(25px);
 }
-.btn-change7{
+.social_connect_button
+{
     height: 50px;
     width: 100%;
     background: radial-gradient(#44008b, #ad1cff);
@@ -52,7 +53,7 @@
     -webkit-transition-timing-function: linear;
     box-shadow:0px 0 0 #31708f  inset;
 }
-.btn-change7:hover{
+.social_connect_button:hover{
     box-shadow:500px 0 0 white inset;
     text-decoration-color: #c16bed;
 }
@@ -60,4 +61,8 @@
 {
     color: #e1a6ff;
     padding-left: 30%;
+}
+
+.login_form_style{
+    color: white;float: left
 }
