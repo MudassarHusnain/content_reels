@@ -40,9 +40,9 @@ html, body {
 /*    height: 100%;*/
     background-color: #152733;
 }
-.project-listing{
-        background-color: #152733;
-}
+/*.project-listing{*/
+/*        background-color: #152733;*/
+/*}*/
 
 .form-holder {
     display: flex;
