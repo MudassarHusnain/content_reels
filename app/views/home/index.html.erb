@@ -6,17 +6,24 @@
   </video>
   <div class="video-overlay"></div>
   <div class="content">
-    <% if user_signed_in? %>
-      <div> Welcome <%= current_user.email %> </div>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-    <% end %>
-    <h1>Hello DigitalOcean!</h1>
-    <%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
-    <%#= render "projects/form",project:Project.new,class: 'position-relative'%>
-    <%= link_to 'View Projects',projects_path,class:'btn btn-lg btn-primary position-absolute top-5 end-0 mt-10 me-5 project-view',style: 'width: 25%;height: 8%;font-size: 30px ;margin-top:7%;' %>
-  </div>
+
+          <% if user_signed_in? %>
+            <div> Welcome <%= current_user.email %> </div>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
+          <h1>Hello DigitalOcean!</h1>
+          <%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
+          <%= render "projects/form",project:Project.new,class: 'position-relative'%>
+    <%= link_to 'View Projects',projects_path,class:'btn btn-lg btn-secondary',style: '
+                position:absolute;
+                width: 25%;
+                height: 8%;
+                left: 72%;
+                top: 30%;
+                font-size: 25px ;
+                color: white !important;' %>  </div>
 </div>
 <!-- Page Content -->
 

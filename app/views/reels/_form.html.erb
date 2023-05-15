@@ -1,0 +1,54 @@
+<%= form_for(reel) do |form| %>
+<% if reel.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(reel.errors.count, "error") %> prohibited this Reel from being saved:</h2>
+      <ul>
+        <% reel.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="form-body bg-dark">
+      <div class="row">
+        <div class="form-holder">
+          <div class="form-content">
+            <div class="form-items">
+              <h3>Create New Reel</h3>
+              <p>Fill in the data below.</p>
+
+                <div class="col-md-12">
+                  <%= form.text_field :video_set ,class:" form-control" ,placeholder:"Video Set" %>
+                </div>
+
+                <div class="col-md-12">
+                  <%= form.text_field :keywords, class:"form-control",placeholder:"Keyword"%>
+                </div>
+
+                <div class="col-md-12">
+                  <%= form.select :platform,[['Facebook','facebook'],['Youtube','youtube'],['Twitter','twitter']],placeholder:"Select the platform", class:"form-select mt-3"%>
+                </div>
+
+                <div class="col-md-12">
+                  <%= form.number_field :no_of_video, class:"form-control mt-3",placeholder:"No Of Video" %>
+                </div>
+
+                <div class="form-check">
+                  <%= form.check_box :cta, class:"form-check-input", true_value: true, false_value: false%>
+                  <%= form.label :CTA, style: "display: block;color:white;text-transform:uppercase",class: "form-check-label" %>
+                </div>
+
+                <%=form.hidden_field :project_id,value: reel.project_id %>
+
+                <div class="form-button mt-3">
+                  <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%end %>

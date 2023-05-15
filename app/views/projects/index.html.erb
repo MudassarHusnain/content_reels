@@ -1,0 +1,26 @@
+<%= render "projects/form",project:Project.new%>
+
+<div class="container position-relative project-listing">
+
+  <div class="row">
+    <%@projects.each do|project| %>
+
+      <div class="col-sm-3">
+
+        <div class="card">
+
+          <div class="image-container ">
+            <img src="https://content.reelapps.io/static/media/LOGO.c4ba0a75af69c59a6576.png" width="100%" height="100%" class="img-fluid rounded thumbnail-image background-radial-gradient">
+          </div>
+
+          <div class="product-details">
+            <%=project.name%>
+            <br/>
+            <%= link_to "Edit",project_path(project),class:'btn btn-dark' %>
+            <%= link_to "Delete", project, data: { turbo_method: :delete }, class: 'btn btn-danger'%>
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+</div>

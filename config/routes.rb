@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_scope :user do
     # Redirests signing out users back to sign-in
     # get "users", to: "devise/sessions#new"
@@ -15,5 +16,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
   get '/auth/facebook/callback', to: 'integration#facebook_callback'
-  resource :projects
+  resources :projects
+  resources :reels
 end

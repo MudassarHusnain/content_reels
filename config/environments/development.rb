@@ -8,6 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.web_console.whitelisted_ips = '10.28.85.59'
+  config.web_console.whitelisted_ips = '10.28.85.59'
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -59,7 +60,7 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
+  config.assets.debug = true
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
