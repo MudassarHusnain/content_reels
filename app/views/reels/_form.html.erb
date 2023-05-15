@@ -19,11 +19,11 @@
               <p>Fill in the data below.</p>
 
                 <div class="col-md-12">
-                  <%= form.text_field :video_set ,class:" form-control" ,placeholder:"Video Set" %>
+                  <%= form.text_field :video_set ,class: " form-control" ,placeholder:"Video Set" %>
                 </div>
 
                 <div class="col-md-12">
-                  <%= form.text_field :keywords, class:"form-control",placeholder:"Keyword"%>
+                  <%= form.text_field :keywords, class: "form-control",placeholder:"Keyword"%>
                 </div>
 
                 <div class="col-md-12">
@@ -31,18 +31,18 @@
                 </div>
 
                 <div class="col-md-12">
-                  <%= form.number_field :no_of_video, class:"form-control mt-3",placeholder:"No Of Video" %>
+                  <%= form.number_field :no_of_video, class: "form-control mt-3",placeholder:"No Of Video" %>
                 </div>
 
                 <div class="form-check">
-                  <%= form.check_box :cta, class:"form-check-input", true_value: true, false_value: false%>
+                  <%= form.check_box :cta, class: "form-check-input", true_value: true, false_value: false%>
                   <%= form.label :CTA, style: "display: block;color:white;text-transform:uppercase",class: "form-check-label" %>
                 </div>
 
                 <%=form.hidden_field :project_id,value: reel.project_id %>
 
                 <div class="form-button mt-3">
-                  <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                  <button id="submit" type="submit" class= "btn btn-primary">Register</button>
                 </div>
 
               </form>
