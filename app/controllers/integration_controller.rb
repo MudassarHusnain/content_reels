@@ -8,7 +8,6 @@ class IntegrationController < ApplicationController
   def create
     login_url = "https://www.facebook.com/v2.3/dialog/oauth?client_id=#{APP_ID}&redirect_uri=http://localhost:3000/auth/facebook/callback&scope=email"
     redirect_to login_url, allow_other_host: true
-    byebug
     puts response.body
   end
 
@@ -37,7 +36,6 @@ class IntegrationController < ApplicationController
     puts response.body
 
     access_token = access_token
-    
     url = "https://graph.facebook.com/v16.0/me/groups?access_token=#{access_token}"
     response = HTTParty.get(url)
     @posts = JSON.parse(response.body)['data']
