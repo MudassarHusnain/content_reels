@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
   get '/auth/facebook/callback', to: 'integration#facebook_callback'
+  get 'share_post', to: 'integration#post_content'
   resources :projects
   resources :reels
 end

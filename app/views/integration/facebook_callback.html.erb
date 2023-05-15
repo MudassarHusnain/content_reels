@@ -1,8 +1,9 @@
 <br>
 <div class="container">
-  <%= form_tag(callback_integration_path, method: :get) do %>
+  <%= form_tag(share_post_path, method: :get) do %>
     <label style="cursor: auto">Select Voice:</label>
-    <%= select_tag :voice, options_for_select(@posts.pluck("name", "id"))  ,{prompt: 'Select Group'} %>
+    <% options = @data["groups_data"] + @data["pages_data"] %>
+    <%= select_tag :id, options_for_select(options.map { |item| [item["name"], item["id"]] })  ,{prompt: 'Select Group'} %>
     <%= submit_tag 'Submit', class: 'mk-button left-corners right-corners blue-button', id:"submit-btn"%>
   <% end %>
 </div>
