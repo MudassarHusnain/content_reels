@@ -10,7 +10,7 @@
                                       <div class="product-details">
                                         <%=reel.video_set%>
                                         <br/>
-                                        <%= link_to "Edit",reel_path(reel),class:'btn btn-dark' %>
+                                        <%= link_to "Edit",reel_path(reel),class: 'btn btn-dark' %>
                                         <%= link_to "Delete", reel, data: { turbo_method: :delete }, class: 'btn btn-danger'%>
                                       </div>
                                   </div>
@@ -18,7 +18,7 @@
                     <%end %>
                     <div class="col-md-3 ms-5">
                               <div class="card p-3">
-                                <%= link_to new_reel_path(project_id:@project.id) do %>
+                                <%= link_to new_reel_path(project_id: @project.id) do %>
                                   <i class="fas fa-plus ms-3 "></i>
                                 <%end %>
                               </div>
