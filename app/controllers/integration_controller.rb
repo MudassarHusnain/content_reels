@@ -37,7 +37,7 @@ class IntegrationController < ApplicationController
     puts response.body
 
     access_token = access_token
-    byebug
+    
     url = "https://graph.facebook.com/v16.0/me/groups?access_token=#{access_token}"
     response = HTTParty.get(url)
     @posts = JSON.parse(response.body)['data']
