@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top-left">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top-left">
   <div class="container">
     <a class="navbar-brand " href="/"><img src="https://content.reelapps.io/static/media/LOGO.c4ba0a75af69c59a6576.png" width="50%"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,11 +13,28 @@
           <a class="nav-link" href="#"><%=link_to "Projects" ,projects_path,class: 'text-decoration-none  nav-link text-light site-menu' %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-color"><%= link_to 'Text to Speech portal ',  text_to_speech_index_path,class: 'text-decoration-none  nav-link text-light site-menu'%></a>
+          <a class="nav-link text-color"><%= link_to 'Text_to_Speech',  text_to_speech_index_path,class: 'd-block text-decoration-none  nav-link text-light site-menu'%></a>
         </li>
         <li class="nav-item text-color">
           <a class="nav-link text-color text-decoration-none  nav-link text-light site-menu"><%= link_to 'Integrations ',  integration_path,class: 'text-decoration-none  nav-link text-light site-menu' %></a>
         </li>
+        <li class="nav-item dropdown menu-end">
+          <a class="nav-link dropdown-toggle text_overflow text-light" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Welcome<br/><% if current_user.present?%>
+                               <%=current_user.email %>
+                               <%end %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-secondary" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="navbar-nav dropdown-item" href="#">My Account</a></li>
+            <li><a class="navbar-nav dropdown-item" href="#">Privacy Setting</a></li>
+            <li><a class="navbar-nav dropdown-item" href="#">Help & Support</a></li>
+
+
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Logout',destroy_user_session_path,data: { turbo_method: :delete} ,class: 'navbar-nav dropdown-item' %></li>
+          </ul>
+        </li>
+
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link text-light" href="#">Integration</a>-->
 <!--        </li>-->

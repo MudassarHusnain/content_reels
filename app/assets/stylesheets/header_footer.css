@@ -143,3 +143,11 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.text_overflow{
+    margin-left: 10%;
+    white-space: nowrap;
+    overflow: revert;
+    text-overflow: ellipsis;
+    width: 200px;
+    color: white;
+}
