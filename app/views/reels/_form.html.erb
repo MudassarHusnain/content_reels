@@ -35,8 +35,8 @@
                 </div>
 
                 <div class="form-check">
+                  <%= form.label :CTA, style: "color:white;text-transform:uppercase",class: "form-check-label" %>
                   <%= form.check_box :cta, class: "form-check-input", true_value: true, false_value: false%>
-                  <%= form.label :CTA, style: "display: block;color:white;text-transform:uppercase",class: "form-check-label" %>
                 </div>
 
                 <%=form.hidden_field :project_id,value: reel.project_id %>
@@ -45,7 +45,6 @@
                   <button id="submit" type="submit" class= "btn btn-primary">Register</button>
                 </div>
 
-              </form>
             </div>
           </div>
         </div>

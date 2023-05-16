@@ -3,6 +3,11 @@
     <source src="https://reeelapps-app.s3.us-west-2.amazonaws.com/content_reel_bg+-video-2+(720p).mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+  <div class="content">
+    <%= render "projects/form",project: Project.new, class: 'position-relative '%>
+    <%= link_to 'View Projects',projects_path, class: 'btn btn-lg project_view modal_buttons' %>
+    <%= link_to 'Integrations ',  integration_path,class: 'btn btn-lg integration-button modal_buttons' %>
+  </div>
   <div class="container px-5 py-5 px-md-5 text-center text-lg-start my-5">
     <div class="row gx-lg-5 align-items-center mb-5">
       <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -16,24 +21,7 @@
         </p>
         <button class="btn rounded-pill btn-lg btn-block social_connect_button">Watch Demo Videos</button>
       </div>
-      </div>
-  </div>
-  <div class="video-overlay"></div>
-  <div class="content ">
-          <% if user_signed_in? %>
-            <div> Welcome <%= current_user.email %> </div>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to "Sign in", new_user_session_path %>
-          <% end %>
-          <h1>Hello DigitalOcean!</h1>
-
-          <%= link_to 'Text to Speech portal',  text_to_speech_index_path %>
-
-          <%= render "projects/form",project: Project.new, class: 'position-relative '%>
-          <a class="">
-            <%= link_to 'View Projects',projects_path, class: 'btn btn-lg btn-secondary project_view' %>
-          </a>
+   </div>
   </div>
 </div>
 <!-- Page Content -->
