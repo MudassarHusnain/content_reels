@@ -14,7 +14,12 @@ gem "pg"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
-
+#user for google oauth 
+gem 'omniauth'
+gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
+gem 'activerecord-session_store'
+gem 'google-api-client', '~> 0.53.0'
+gem 'googleauth'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -51,6 +56,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'pry', '~> 0.13.1'
+  gem 'pry-byebug', '~> 3.4'
 end
 
 group :development do
@@ -77,8 +84,8 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap', '~> 5.0.2'
 gem 'httparty'
 gem 'koala'
-gem 'omniauth', '~> 1.9'
-# gem "omniauth-rails_csrf_protection"
+gem "omniauth-rails_csrf_protection"
+gem 'rack-cors'
 gem 'omniauth-facebook', '~> 8.0'
 gem 'activerecord-session_store'
 gem 'font-awesome-sass', '~> 4.7'

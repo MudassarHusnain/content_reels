@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -36,7 +36,10 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
+  client_id = Rails.application.credentials[:google][:client_id]
+  client_secret = Rails.application.credentials[:google][:client_secret]
+  config.omniauth :google_oauth2, client_id, client_secret, { scope: "userinfo.email, youtube" }
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -269,7 +272,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
-                  Rails.application.credentials.dig(:facebook, :facebook_client_secret),scope: 'email', info_fields: 'email,name'
+                  Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: "email", info_fields: "email,name"
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

@@ -1,0 +1,29 @@
+<%= form_for @video, url: videos_path, html: { multipart: true } do |f| %>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control', placeholder: 'Enter the video title', required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control', rows: 4, placeholder: 'Enter the video description' %>
+        </div>
+        <div class="form-group">
+          <label for="privacy_status">Privacy Status</label>
+          <select class="form-control" id="privacy_status" name="video[privacy_status]">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="protected">Protected</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <%= f.label :video_file %>
+          <%= f.file_field :video_file, class: 'form-control-file', accept: 'video/*', required: true %>
+        </div>
+        <%= f.submit 'Upload Video', class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  <% end %>
+  
+  
