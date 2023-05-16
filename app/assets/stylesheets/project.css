@@ -223,3 +223,17 @@ html, body {
     height: 8%;
     font-size: 30px;
 }
+.homepage_demo
+{
+    color: #fff;
+    font-size: 17px;
+    font-family:Sans-serif
+}
+.homepage_heading
+{
+    color: white;
+    font-size: 55px
+}
+.homepage_heading_span{
+    color: #e1a6ff; font-size: 50px
+}

@@ -8,11 +8,11 @@ class FacebookService
   end
 
   def self.login
-     "https://www.facebook.com/v2.3/dialog/oauth?client_id=#{APP_ID}&redirect_uri=http://localhost:3000/auth/facebook/callback&scope=email"
+    "https://www.facebook.com/v2.3/dialog/oauth?client_id=#{APP_ID}&redirect_uri=http://localhost:3000/auth/facebook/callback&scope=email"
   end
 
   def facebook_call
-    access_token = @access_token
+    access_token =  @access_token
     response = HTTParty.get('https://graph.facebook.com/v2.3/me', {
       query: {
         access_token: access_token,
@@ -43,10 +43,22 @@ class FacebookService
     url = "https://graph.facebook.com/#{page_id}/feed"
     params = {
       query: {
-        message: "Hello Fans! Testing page",
+        message: "Testing post on page",
         access_token: page_access_token
       }
     }
+    # Make the POST request using HTTParty
+    response = HTTParty.post(url, params)
+    puts response
   end
-
+  def get_token
+    token_url = "https://graph.facebook.com/v16.0/oauth/access_token"
+    response = HTTParty.get(token_url, query: {
+      client_id: APP_ID,
+      redirect_uri: "http://localhost:3000/auth/facebook/callback",
+      client_secret: APP_SECRET,
+      code: @code
+    })
+    response["access_token"]
+  end
 end
