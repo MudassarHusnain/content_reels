@@ -38,7 +38,7 @@
 
 html, body {
 /*    height: 100%;*/
-    background-color: #152733;
+    background-color: black;
 }
 /*.project-listing{*/
 /*        background-color: #152733;*/
@@ -209,6 +209,15 @@ html, body {
         height: 5%;
         font-size: 10px ;
 }
+    .project_view{
+        /*color: red;*/
+        position: absolute;
+        width: 25%;
+        top: 25%;
+        right: 5%;
+        height: 8%;
+        font-size: 10px;
+    }
 }
 .project-listing{
     position: relative;
