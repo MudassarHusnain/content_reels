@@ -64,6 +64,15 @@
     padding-left: 30%;
 }
 
+
 .login_form_style{
-    color: white;float: left
+    color: white;
+    float: left;
+    padding-top: 10px;
+}
+.login_form_style_email{
+    color: white;
+    float: left;
+    padding-top: 10px;
+    margin-right: 250px;
 }

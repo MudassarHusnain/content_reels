@@ -25,18 +25,18 @@
             <!-- Email input -->
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-outline mb-4">
-                <label class="form-label login_form_style" for="form3Example3cg">Email Address</label>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                <label class="form-label login_form_style_email" for="form3Example3cg">Email</label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
               </div>
               <div class="form-outline mb-4">
                 <label class="form-label login_form_style" for="form3Example3cg" style="align-items: flex-start">Password</label>
-                <%= f.password_field :password, autocomplete: "current-password", class:"form-control " %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control " %>
               </div>
               <!-- Checkbox -->
-              <%= f.submit "Sign in ContentReel", class:"btn rounded-pill btn-lg btn-block social_connect_button" %>
+              <%= f.submit "Sign in ContentReel", class: "btn rounded-pill btn-lg btn-block social_connect_button" %>
               <hr class="my-4">
             <div style="text-align: start">
-            <%= render "devise/shared/links"%>
+            <%= render "devise/shared/links" %>
             </div>
         <% end %>
           </div>
