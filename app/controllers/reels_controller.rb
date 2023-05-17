@@ -3,7 +3,6 @@ class ReelsController < ApplicationController
   before_action :set_reel, only: %i[ show edit update destroy ]
 
   def index
-
     @project = Project.find(params[:project_id])
     @reels = @project.reels.all
   end
@@ -15,15 +14,13 @@ class ReelsController < ApplicationController
   end
 
   def new
-
     @project = Project.find(params[:project_id])
     @reel = @project.reels.new
-    # debugger
   end
 
   def create
-    # debugger
     @reel = Reel.new(reel_params)
+    
     respond_to do |format|
       if @reel.save
         format.html { redirect_to projects_url, notice: "Reel was successfully created." }
@@ -37,10 +34,12 @@ class ReelsController < ApplicationController
   end
 
   def destroy
-    @reel.destroy
+    
     respond_to do |format|
-      format.html { redirect_to reels_path(product_id:@reel.project_id), notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
+      if @reel.destroy
+        format.html { redirect_to reels_path(product_id:@reel.project_id), notice: "Project was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 

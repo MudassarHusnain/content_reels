@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-    before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[ show edit update destroy ]
+  
   def index
     @projects = Project.all
     @projects=@projects.reverse
   end
+  
   def new
     @project = Project.new
   end
@@ -40,20 +42,20 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
+      if @project.destroy
+        format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
 
      def set_project
-          @project = Project.find(params[:id])
+        @project = Project.find(params[:id])
      end
       def project_params
-              params.require(:project).permit(:name, :user_id)
-
+        params.require(:project).permit(:name, :user_id)
       end
 end
