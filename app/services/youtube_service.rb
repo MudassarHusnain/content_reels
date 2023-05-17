@@ -16,7 +16,7 @@ class YoutubeService
       },
     )
 
-    video_file_path = "vecteezy_video-countdown-counter-with-rounded-corners-for-10-to-1-on_5965601_897.mp4"
+    video_file_path = "public/video/test.mp4"
     begin
       video_object = client.insert_video("snippet,status", video, upload_source: video_file_path, content_type: "video/*")
       puts "Video ID: #{video_object.id}"
