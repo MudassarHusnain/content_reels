@@ -1,6 +1,7 @@
 class FacebookService
   APP_ID = Rails.application.credentials[:facebook][:app_id]
   APP_SECRET = Rails.application.credentials[:facebook][:app_secret]
+  URL = Rails.application.credentials[:host]
 
   def initialize(*args)
     @code = args.first[:code] if args.first[:code]
@@ -9,7 +10,7 @@ class FacebookService
   end
 
   def self.login
-    "https://www.facebook.com/v2.3/dialog/oauth?client_id=#{APP_ID}&redirect_uri=http://localhost:3000/auth/facebook/callback&scope=email"
+    "https://www.facebook.com/v2.3/dialog/oauth?client_id=#{APP_ID}&redirect_uri=#{URL}/auth/facebook/callback&scope=email"
   end
 
   def facebook_call
@@ -56,7 +57,7 @@ class FacebookService
     token_url = "https://graph.facebook.com/v16.0/oauth/access_token"
     response = HTTParty.get(token_url, query: {
                                          client_id: APP_ID,
-                                         redirect_uri: "http://localhost:3000/auth/facebook/callback",
+                                         redirect_uri: "#{URL}/auth/facebook/callback",
                                          client_secret: APP_SECRET,
                                          code: @code,
                                        })
