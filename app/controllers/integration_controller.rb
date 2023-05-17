@@ -1,7 +1,9 @@
 class IntegrationController < ApplicationController
   require 'httparty'
+ 
   def index
   end
+ 
   def create
     login_url = FacebookService.login
     redirect_to login_url, allow_other_host: true
@@ -17,4 +19,5 @@ class IntegrationController < ApplicationController
     post_data = FacebookService.new({id: params[:id], token: session[:token]})
     post_data.upload_content
   end
+  
 end
