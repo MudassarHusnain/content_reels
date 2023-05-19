@@ -1,9 +1,9 @@
 <br>
 <div class="container">
   <%= form_tag(share_post_path, method: :get) do %>
-    <label style="cursor: auto">Select Voice:</label>
+    <label style="cursor: auto">Select Data:</label>
     <% options = @data["groups_data"] + @data["pages_data"] %>
-    <%= select_tag :id, options_for_select(options.map { |item| [item["name"], item["id"]] })  ,{prompt: 'Select Group'} %>
+    <%= select_tag :id, options_for_select(options.map { |item| [item["name"], "#{item["id"]},#{item["type"]}"] })  ,{prompt: 'Select Group'} %>
     <%= submit_tag 'Submit', class: 'mk-button left-corners right-corners blue-button', id:"submit-btn"%>
   <% end %>
 </div>

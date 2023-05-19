@@ -88,9 +88,16 @@ gem "bootstrap", "~> 5.0.2"
 gem "httparty"
 gem "koala"
 gem "omniauth-rails_csrf_protection"
-gem "rack-cors"
-gem "omniauth-facebook", "~> 8.0"
-gem "activerecord-session_store"
-gem "font-awesome-sass", "~> 4.7"
-gem "sass-rails", "~> 6.0.0"
-gem "sassc"
+
+
+gem 'rack-cors'
+gem 'omniauth-facebook', '~> 8.0'
+gem 'activerecord-session_store'
+gem 'font-awesome-sass', '~> 4.7'
+gem 'sass-rails', '~> 6.0.0'
+gem 'sassc'
+gem 'rest-client'
+gem 'mime-types', '~> 3.1'
+gem 'shotstack', '~> 0.2.2'
+gem 'delayed_job', '~> 4.1', '>= 4.1.2'
+gem 'delayed_job_active_record'

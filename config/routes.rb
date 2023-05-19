@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
   get "/auth/facebook/callback", to: "integration#facebook_callback"
   get "share_post", to: "integration#post_content"
+  get "stackio_integration/create"
   resources :projects
   resources :reels
   resources :videos, only: [:new, :create, :index]
