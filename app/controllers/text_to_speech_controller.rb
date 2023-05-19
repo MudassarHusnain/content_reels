@@ -1,5 +1,6 @@
 class TextToSpeechController < ApplicationController
   before_action :load_data
+
   def index
   end
 
