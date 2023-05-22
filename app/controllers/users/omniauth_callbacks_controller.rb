@@ -8,7 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     # Retrieve the user's Facebook access token
     @user = User.from_fb_omniauth(request.env["omniauth.auth"], current_user)
-    byebug
+    
     # Update the user's access token in the database
     current_user.update(facebook_access_token: session[:token])
 
