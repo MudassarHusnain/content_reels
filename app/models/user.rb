@@ -8,11 +8,13 @@ class User < ApplicationRecord
     current_user.youtube_token = auth.credentials.token
     current_user.save
   end
-  def self.create_from_provider_data(provider_data)
-    Rails.logger.debug "Show this message!"
-    where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
-      user.email = provider_data.info.email
-      user.password = Devise.friendly_token[0, 20]
-    end
+
+  def self.from_fb_omniauth(auth, current_user)
+    current_user.facebook_token = auth.credentials.token
+    current_user.save
+  end
+
+  def facebook_connected?
+    facebook_token.present?
   end
 end

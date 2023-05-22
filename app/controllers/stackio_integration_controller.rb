@@ -6,13 +6,19 @@ class StackioIntegrationController < ApplicationController
 
   end
   def create
-  api_client = Shotstack::EditApi.new
 
-  video_asset = Shotstack::VideoAsset.new(
+    api_client = Shotstack::EditApi.new
+    video_asset = Shotstack::VideoAsset.new(
     src: "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4",
     trim: 3
   )
 
+    audio_asset = Shotstack::AudioAsset.new(
+      src: 'https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/music/unminus/lit.mp3',
+      trim: 2,
+      volume: 0.5,
+      effect: 'fadeInFadeOut'
+    )
   video_clip = Shotstack::Clip.new(
     asset: video_asset,
     start: 0,

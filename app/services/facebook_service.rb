@@ -2,7 +2,7 @@ class FacebookService
   APP_ID = Rails.application.credentials[:facebook][:app_id]
   APP_SECRET = Rails.application.credentials[:facebook][:app_secret]
   URL = Rails.application.credentials[:host]
-
+  include Integration
   def initialize(*args)
     @code = args.first[:code] if args.first[:code]
     @id = args.first[:id] if args.first[:id]
@@ -14,25 +14,14 @@ class FacebookService
   end
 
   def facebook_call(token)
+
     access_token = token
     groups_list = "https://graph.facebook.com/v16.0/me/groups?access_token=#{access_token}"
     pages_list = "https://graph.facebook.com/v16.0/me/accounts?access_token=#{access_token}"
     groups_response = HTTParty.get(groups_list)
     pages_response = HTTParty.get(pages_list)
-    modified_group_response = []
-    modified_page_response = []
-    groups_response["data"].each do |hash|
-      hash['type'] = 'group'
-      modified_group_response << hash.dup
-    end
-    pages_response["data"].each do |hash|
-      hash['type'] = 'page'
-      modified_page_response << hash.dup
-    end
-    facebook_response = {}
-    facebook_response["groups_data"] = modified_group_response
-    facebook_response["pages_data"] = modified_page_response
-    facebook_response
+    facebook_api_data(groups_response,pages_response)
+
   end
 
   def publish_video_on_group

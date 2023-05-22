@@ -7,4 +7,8 @@ import "bootstrap"
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery3
+//= require select2
+//= require select2_init
+//= require popper
+
 

@@ -7,6 +7,7 @@ class IntegrationController < ApplicationController
   def create
     login_url = FacebookService.login
     redirect_to login_url, allow_other_host: true
+
   end
 
   def facebook_callback
@@ -20,9 +21,9 @@ class IntegrationController < ApplicationController
     post_data = FacebookService.new({id: params[:id], token: session[:token]})
     selected_value = params[:id].split(',')
     type = selected_value[1]
-    if type == 'group'
+    if type == 'GROUPS'
     post_data.delay.publish_video_on_group
-    else if type == 'page'
+    else if type == 'PAGES'
       post_data.delay.publish_video_on_page
       end
     end

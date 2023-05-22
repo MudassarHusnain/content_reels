@@ -101,7 +101,12 @@
             <p style="font-size: 15px">Not Connected</p>
           </div>
           <div class="flex-shrink-0 float-start social_button_align">
-            <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
+            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content"></div>
+              </div>
+            </div>
+            <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button", :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window' %>
           </div>
         </div>
     </div>
