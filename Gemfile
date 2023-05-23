@@ -102,3 +102,4 @@ gem 'shotstack', '~> 0.2.2'
 gem 'delayed_job', '~> 4.1', '>= 4.1.2'
 gem 'delayed_job_active_record'
 gem 'select2-rails', '~> 4.0', '>= 4.0.3'
+gem "ruby-openai"

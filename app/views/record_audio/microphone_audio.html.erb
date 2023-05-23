@@ -1,0 +1,10 @@
+<audio controls id="recordedAudio">
+  <source src="<%= j(params[:audio_blob]) %>" type="audio/mpeg">
+</audio>
+
+<script>
+    var recordedAudio = document.getElementById('recordedAudio');
+    function playRecordedAudio() {
+        recordedAudio.play();
+    }
+</script>

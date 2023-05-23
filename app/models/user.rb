@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth, current_user)
     current_user.youtube_token = auth.credentials.token
-    current_user.save
+    current_user.microphone_audio
   end
 
   def self.from_fb_omniauth(auth, current_user)
     current_user.facebook_token = auth.credentials.token
-    current_user.save
+    current_user.microphone_audio
   end
 
   def facebook_connected?
