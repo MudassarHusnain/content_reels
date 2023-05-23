@@ -115,7 +115,11 @@
         <div class="flex-grow-1 ms-5" >
           <h3 style="font-size: 20px">Youtube</h3>
           <hr class="hr_social" >
+          <%if current_user.youtube_token == nil %>
           <p style="font-size: 15px">Not Connected</p>
+          <%else%>
+          <p style="font-size: 15px">Connected</p>
+          <%end%>
         </div>
         <div class="flex-shrink-1 float-start social_button_align">
         <%= button_to "Connect", user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "btn rounded btn-lg social_connect_button" %>

@@ -17,9 +17,11 @@ gem "puma", "~> 5.0"
 #user for google oauth
 gem "omniauth"
 gem "omniauth-google-oauth2", "~> 1.1", ">= 1.1.1"
-gem "activerecord-session_store"
+
 gem "google-api-client", "~> 0.53.0"
 gem "googleauth"
+#use for shotstack
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -33,7 +35,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # To edit videos
-gem 'shotstack', '~> 0.2.2'
+gem "shotstack", "~> 0.2.2"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
