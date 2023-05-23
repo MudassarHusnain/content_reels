@@ -3,8 +3,7 @@ class RecordAudioController < ApplicationController
 
   def index
   end
-  def microphone_audio
-    params[:audio_blob]
+  def show
   end
 
 end

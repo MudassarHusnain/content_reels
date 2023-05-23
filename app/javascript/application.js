@@ -3,7 +3,8 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
-
+import "./audio/record_audio"
+import "./audio/play_audio"
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery3

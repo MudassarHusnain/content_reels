@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   get "stackio_integration/create"
   resources :projects
   resources :reels
-  get "/audio/save", to: "record_audio#microphone_audio"
-  get "record_audio/index"
+
+  get "/audio/save", to: "record_audio#show"
+  get "record_audio/new"
   get "converse", to: "chat_gpt#converse"
   get "send_response", to: "chat_gpt#send_to_chat"
 
