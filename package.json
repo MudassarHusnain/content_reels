@@ -2,6 +2,7 @@
   "name": "contentreels",
   "version": "1.0.0",
   "dependencies": {
+    "audio-recorder-js": "^1.0.7",
     "jquery": "^3.6.4"
   }
 }

@@ -41,6 +41,10 @@ Devise.setup do |config|
   client_secret = Rails.application.credentials[:google][:client_secret] if Rails.application.credentials[:google]
   config.omniauth :google_oauth2, client_id, client_secret, { scope: "userinfo.email, youtube" }
 
+
+  config.omniauth :facebook, Rails.application.credentials[:facebook][:app_id],
+                  Rails.application.credentials[:facebook][:app_secret]
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -271,8 +275,7 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
-  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
-                  Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: "email", info_fields: "email,name"
+
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get "users", to: "devise/sessions#new"
     get "/users/sign_out" => "devise/sessions#destroy"
   end
+  
   root "home#index"
   get "text_to_speech", to: "text_to_speech#text_to_speech"
   get "text_to_speech/index"
@@ -16,7 +17,15 @@ Rails.application.routes.draw do
   get "/auth/facebook/callback", to: "integration#facebook_callback"
   get "share_post", to: "integration#post_content"
   get "videos/render_video"
+  get "stackio_integration/create"
+
   resources :projects
   resources :reels
+
+  get "/audio/save", to: "record_audio#show"
+  get "record_audio/new"
+  get "generate_text", to: "chat_gpt#new"
+  get "send_response", to: "chat_gpt#send_to_chat"
+
   resources :videos, only: [:new, :create, :index]
 end

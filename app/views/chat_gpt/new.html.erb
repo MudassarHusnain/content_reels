@@ -1,0 +1,12 @@
+<br>
+<div class="container">
+  <%= form_tag(send_response_path, method: :get) do %>
+    <label class="">Enter Text</label>
+    <%= text_area_tag :text%>
+    <br>
+    <%= submit_tag 'Submit', class: 'mk-button left-corners right-corners blue-button', id:"submit-btn"%>
+  <% end %>
+</div>
+<br>
+<br>
+<br>
