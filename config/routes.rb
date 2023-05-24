@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get "/audio/save", to: "record_audio#show"
   get "record_audio/new"
-  get "converse", to: "chat_gpt#converse"
+  get "generate_text", to: "chat_gpt#new"
   get "send_response", to: "chat_gpt#send_to_chat"
 
   resources :videos, only: [:new, :create, :index]

@@ -21,7 +21,7 @@ class TextToSpeechService
     }
     response = HTTParty.post(endpoint, headers: headers, body: body.to_json)
     if response.success?
-      file_path = Rails.root.join('public', 'audio', 'hello.mp3')
+      file_path = Rails.root.join('storage', 'audio', 'hello.mp3')
       File.binwrite(file_path, response.body)
       file_path
     else

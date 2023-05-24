@@ -17,7 +17,7 @@ class VideosController < ApplicationController
     youtube_service = YoutubeService.new
     if @video.save
 
-      file_path = Rails.root.join("public", "video", "test.mp4")
+      file_path = Rails.root.join("storage", "video", "test.mp4")
       File.open(file_path, "wb") do |file|
         file.write(@video.video_file.download)
       end

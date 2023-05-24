@@ -1,5 +1,5 @@
   class ChatGptController < ApplicationController
-    def converse
+    def new
     end
     def send_to_chat
       user_input = params[:text]
