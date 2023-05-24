@@ -1,6 +1,7 @@
 require "net/http"
 
 class ShotstackService
+  
   def text_to_video(text, audio_src)
     script = text.split(".")
     api_client = Shotstack::EditApi.new
@@ -229,4 +230,5 @@ class ShotstackService
     puts ">> ruby examples/status.rb #{response.url}"
     return response
   end
+  
 end

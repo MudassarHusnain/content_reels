@@ -22,10 +22,9 @@ class IntegrationController < ApplicationController
     selected_value = params[:id].split(',')
     type = selected_value[1]
     if type == 'GROUPS'
-    post_data.delay.publish_video_on_group
-    else if type == 'PAGES'
+      post_data.delay.publish_video_on_group
+    elsif type == 'PAGES'
       post_data.delay.publish_video_on_page
-      end
     end
     redirect_to integration_path, notice: 'Video Uploaded successfully.'
   end
