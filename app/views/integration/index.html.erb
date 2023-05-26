@@ -95,15 +95,27 @@
             <img src="https://content.reelapps.io/static/media/logo-facebook.e558b5522dc1e465e221a5907ceb5ed1.svg" class="social_card_image_vertical card-img-top center"
                alt="Hollywood Sign on The Hill"/>
           </div>
-          <div class="flex-grow-1 ms-5" >
+          <%if @status == 'connected' %>
+        <div class="flex-grow-1 ms-5" >
             <h3 style="font-size: 20px">Facebook</h3>
             <hr class="hr_social">
-            <p style="font-size: 15px">Not Connected</p>
-          </div>
+            <p style="font-size: 15px">Connected</p>
+        </div>
           <div class="flex-shrink-0 float-start social_button_align">
-            <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button", :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window' %>
+            <%= link_to "Disconnect", disconnect_facebook_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
           </div>
         </div>
+            <%else %>
+            <div class="flex-grow-1 ms-5" >
+              <h3 style="font-size: 20px">Facebook</h3>
+              <hr class="hr_social">
+              <p style="font-size: 15px">Not Connected</p>
+            </div>
+            <div class="flex-shrink-0 float-start social_button_align">
+              <%= button_to "Connect", user_facebook_omniauth_authorize_path , method: :post, data: { turbo: "false" }, id: "google", class: "btn rounded btn-lg social_connect_button"%>
+            </div>
+            </div>
+          <%end %>
     </div>
     <div class="col m-2">
       <div class="my_connection_card card-1">
@@ -134,7 +146,7 @@
           <p style="font-size: 15px">Not Connected</p>
         </div>
         <div class="flex-shrink-1 float-start social_button_align">
-          <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
+          <%= link_to "Connect", user_facebook_omniauth_authorize_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
         </div>
       </div>
     </div>
@@ -150,7 +162,7 @@
           <p style="font-size: 15px">Not Connected</p>
         </div>
         <div class="flex-shrink-1 float-start social_button_align">
-          <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
+          <%= link_to "Connect", user_facebook_omniauth_authorize_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
         </div>
       </div>
     </div>
@@ -166,7 +178,7 @@
           <p style="font-size: 15px">Not Connected</p>
         </div>
         <div class="flex-shrink-1 float-start social_button_align">
-          <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
+          <%= link_to "Connect", user_facebook_omniauth_authorize_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
         </div>
       </div>
     </div>
@@ -182,7 +194,7 @@
           <p style="font-size: 15px">Not Connected</p>
         </div>
         <div class="flex-shrink-1 float-start social_button_align">
-          <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
+          <%= link_to "Connect", user_facebook_omniauth_authorize_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
         </div>
       </div>
     </div>
@@ -198,7 +210,7 @@
           <p style="font-size: 15px">Not Connected</p>
         </div>
         <div class="flex-shrink-1 float-start social_button_align">
-          <%= link_to "Connect", fb_integration_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
+          <%= link_to "Connect", user_facebook_omniauth_authorize_path, id: "google", class: "btn rounded btn-lg social_connect_button" %>
         </div>
       </div>
     </div>

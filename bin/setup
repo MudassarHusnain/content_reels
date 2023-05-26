@@ -1,4 +1,4 @@
-#!/usr/script/env ruby
+#!/usr/bin/env ruby
 require "fileutils"
 
 # path to your application root.
@@ -9,8 +9,8 @@ def system!(*args)
 end
 
 FileUtils.chdir APP_ROOT do
-  # This script is a way to set up or update your development environment automatically.
-  # This script is idempotent, so that you can run it at any time and get an expectable outcome.
+  # This bin is a way to set up or update your development environment automatically.
+  # This bin is idempotent, so that you can run it at any time and get an expectable outcome.
   # Add necessary setup steps to this file.
 
   puts "== Installing dependencies =="
@@ -23,11 +23,11 @@ FileUtils.chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
-  system! "script/rails db:prepare"
+  system! "bin/rails db:prepare"
 
   puts "\n== Removing old logs and tempfiles =="
-  system! "script/rails log:clear tmp:clear"
+  system! "bin/rails log:clear tmp:clear"
 
   puts "\n== Restarting application server =="
-  system! "script/rails restart"
+  system! "bin/rails restart"
 end
