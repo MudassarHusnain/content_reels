@@ -14,7 +14,6 @@ class ChatgptService
 
   def image_generation
     client = OpenAI::Client.new
-    byebug
     response = client.images.generate(parameters: { prompt: "Real estate business", size: "256x256" })
     puts response.dig("data", 0, "url")
 
