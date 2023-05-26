@@ -1,0 +1,35 @@
+<%= form_for template do |form| %>
+  <% if template.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(template.errors.count, "error") %> prohibited this Reel from being saved:</h2>
+      <ul>
+        <% template.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-body bg-dark">
+    <div class="row">
+      <div class="form-holder">
+        <div class="form-content">
+          <div class="form-items">
+            <h3>Create New Reel</h3>
+            <p>Fill in the data below.</p>
+            <div class="form-group">
+              <%= form.label :file %>
+              <%= form.file_field :file, class: "form-control", placeholder: "Upload Video" %>
+            </div>
+            <%= form.hidden_field :reel_id, value: @template.reel_id %>
+            <br>
+            <div>
+              <%= form.submit "Create", class: "btn btn-sm modal_buttons text-light border" %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

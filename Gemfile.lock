@@ -298,6 +298,9 @@ GEM
       railties (>= 5.2)
     retriable (3.1.2)
     rexml (3.2.5)
+    ruby-openai (4.1.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass (3.7.4)
@@ -402,6 +405,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.3)
   redis (~> 4.0)
+  ruby-openai
   sass-rails (~> 6.0.0)
   sassc
   selenium-webdriver

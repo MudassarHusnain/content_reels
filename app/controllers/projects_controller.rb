@@ -1,18 +1,18 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: %i[ show edit update destroy ]
-  
+
   def index
-    @projects = Project.all
-    @projects=@projects.reverse
+    @projects = Project.order("created_at DESC")
   end
-  
+
   def new
     @project = Project.new
   end
 
   def create
     @project = Project.new(project_params)
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by(id:params[:id])
+    @project = Project.find_by(id: params[:id])
   end
 
   def update
@@ -52,10 +52,11 @@ class ProjectsController < ApplicationController
 
   private
 
-     def set_project
-        @project = Project.find(params[:id])
-     end
-      def project_params
-        params.require(:project).permit(:name, :user_id)
-      end
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def project_params
+    params.require(:project).permit(:name, :user_id)
+  end
 end

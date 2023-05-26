@@ -284,3 +284,144 @@ html, body {
     background: transparent;
     border:1px white solid;
 }
+.sidebar {
+    position: fixed;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 13%;
+    z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+.sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+.script-view{
+    position: relative;
+    overflow: auto;
+    border-radius: 1%;
+    top: 50%;
+    bottom: 50%;
+    left: 15%;
+    width: 70%;
+    border: 2px solid black;
+    height: 50%;
+    font-size: 55px;
+    font-family: helvetica, verdana, arial, sans-serif;
+}
+.editor{
+    position: absolute;
+    border-radius: 1%;
+    top: 20%;
+    bottom: 50%;
+    left: 42%;
+    width: 50%;
+    border: 2px solid black;
+    height: 50%;
+    font-size: 25px;
+    font-family: helvetica, verdana, arial, sans-serif;
+}
+.text_size{
+    font-size: 15px;
+}
+.text_size_fa{
+    font-size: 22px;
+}
+.editor1{
+    position: absolute;
+    overflow: auto;
+    border-radius: 1%;
+    top: 20%;
+    bottom: 50%;
+    left: 15%;
+    width: 50%;
+    border: 2px solid black;
+    height: 60%;
+    font-size: 25px;
+    font-family: helvetica, verdana, arial, sans-serif;
+}
+.modal_buttons1 {
+    /*height: 60px;*/
+    /*width: 25%;*/
+    position: relative;
+    top: 10%;
+    display: flex;
+    left: 25%;
+    /*right: 5%;*/
+    justify-content: center;
+    background: transparent;
+    border: 1px white solid;
+    /*margin-bottom: 20px;*/
+    color: white;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: linear;
+    box-shadow: 0px 0 0 #31708f inset;
+}
+.editor2{
+    position: absolute;
+    overflow: auto;
+    border-radius: 1%;
+    top: 80%;
+    bottom: 50%;
+    left: 15%;
+    width: 30%;
+    border: 2px solid black;
+    height: 10%;
+    font-size: 25px;
+    font-family: helvetica, verdana, arial, sans-serif;
+}
+.list-group-item-action{
+    width: 100%;
+}
+.script{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+}
+.save_buttons1{
+    /*height: 60px;*/
+    /*width: 25%;*/
+    position: relative;
+    top: 20px;
+    /*display: flex;*/
+    left: 75%;
+    /*right: 5%;*/
+    justify-content: center;
+    background: transparent;
+    border: 1px white solid;
+    /*margin-bottom: 20px;*/
+    color: white;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: linear;
+    box-shadow: 0px 0 0 #31708f inset;
+}
+.save_buttons1:hover{
+    background: radial-gradient(#44008b, #ad1cff);
+    text-decoration-color: #c16bed;
+    color: white;
+}
+.pse:hover{
+    background: radial-gradient(#44008b, #ad1cff);
+    text-decoration-color: #c16bed;
+    color: white;
+}

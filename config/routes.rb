@@ -17,6 +17,13 @@ Rails.application.routes.draw do
   get "share_post", to: "integration#post_content"
   get "videos/render_video"
   resources :projects
-  resources :reels
+  resources :reels do
+    member do
+      get "script", to: "reels#script"
+      get "editor", to: "reels#editor"
+    end
+  end
+  resources :templates
+  get 'openai',to: "chats#openai"
   resources :videos, only: [:new, :create, :index]
 end

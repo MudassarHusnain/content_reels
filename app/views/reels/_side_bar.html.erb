@@ -1,0 +1,12 @@
+<header>
+  <nav id="sidebarMenu" class="collapse d-lg-block bg-dark sidebar collapse">
+    <div class="position-fixed">
+      <div class="list-group list-group-flush mt-4">
+        <%#debugger %>
+        <%= link_to "Courses", projects_path, class: 'list-group-item list-group-item-action w-100 h-100 px-4 py-4 ripple pse  border rounded-3 fas fa-building fa-fw me-3 mb-2' %>
+        <%= link_to "Script", script_reel_path(reel), class: 'list-group-item list-group-item-action w-100 h-100 px-4 py-4  border rounded-3 ripple fas fa-bars fa-fw me-3 mb-2' %>
+        <%= link_to "Editor", editor_reel_path, class: 'list-group-item list-group-item-action w-100 h-100 px-4 py-4  ripple border rounded-3 fas fa-building fa-fw me-3 mb-2' %>
+      </div>
+    </div>
+  </nav>
+</header>

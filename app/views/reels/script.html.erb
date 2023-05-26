@@ -1,0 +1,6 @@
+<%= render partial: 'reels/side_bar',locals: {reel: @reel} %>
+<button class="btn btn-lg save_buttons1">Save</button>
+<button class="me-4 btn btn-lg save_buttons1">Convert To Video</button>
+<div class="border border-2 rounded-3 script bg-light overflow-scroll">
+    <%= @reel.script %>
+</div>
