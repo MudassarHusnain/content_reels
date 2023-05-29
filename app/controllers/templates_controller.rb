@@ -2,6 +2,7 @@ class TemplatesController < ApplicationController
   before_action :set_reel, only: [:new, :create]
 
   def index
+
   end
 
   def new

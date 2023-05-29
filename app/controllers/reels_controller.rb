@@ -54,7 +54,8 @@ class ReelsController < ApplicationController
   end
 
   def editor
-    @templates = Template.all
+
+    @templates = @reel.templates.all
   end
 
   def text_to_video
