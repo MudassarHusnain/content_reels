@@ -1,6 +1,8 @@
-<%= render partial: 'reels/side_bar',locals: {reel: @reel} %>
-<button class="btn btn-lg save_buttons1">Save</button>
-<button class="me-4 btn btn-lg save_buttons1">Convert To Video</button>
+<%= render partial: "reels/side_bar", locals: { reel: @reel } %>
+
+<% script = @reel.script %>
+<%= link_to "Make a video", text_to_video_path(script_text: script), class: "btn btn-lg save_buttons1" %>
+<%= link_to "Save", script_reel_path, class: "btn btn-lg save_buttons1" %>
 <div class="border border-2 rounded-3 script bg-light overflow-scroll">
-    <%= @reel.script %>
+    <%= best_in_place @reel, :script, :as => :textarea %>
 </div>

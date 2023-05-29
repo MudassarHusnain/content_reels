@@ -42,6 +42,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_075100) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -90,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_075100) do
     t.string "provide", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
     t.string "youtube_token"
+    t.string "facebook_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

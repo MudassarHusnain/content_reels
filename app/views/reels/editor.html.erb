@@ -1,4 +1,4 @@
-<%= render partial: 'reels/side_bar', locals: { reel: @reel } %>
+<%= render partial: "reels/side_bar", locals: { reel: @reel } %>
 <% selected = "" %>
 <div class="editor bg-secondary w-50 h-75">
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -33,7 +33,7 @@
       </div>
     </div>
   </nav>
-  <!--    <iframe width="560" height="315" src="<%#= url_for(selected.file) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+  <!--    <iframe width="560" height="315" src="<% #= url_for(selected.file) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
   <img src="https://ichef.bbci.co.uk/images/ic/640x360/p05ccrb2.jpg" width="100%" height="86%">
 
 </div>
@@ -46,5 +46,5 @@
   </div>
 </div>
 <div class="editor2 w-25 mt-5">
-  <%= link_to "Upload Video / Audio", new_template_path(reel_id: @reel.id), class: 'btn btn-secondary modal_buttons1' %>
+  <%= link_to "Upload Video / Audio", new_template_path(reel_id: @reel.id), class: "btn btn-secondary modal_buttons1" %>
 </div>

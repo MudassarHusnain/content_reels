@@ -1,5 +1,6 @@
 class TemplatesController < ApplicationController
-  before_action :set_reel ,only: [:new, :create]
+  before_action :set_reel, only: [:new, :create]
+
   def index
   end
 
@@ -17,10 +18,12 @@ class TemplatesController < ApplicationController
   end
 
   private
+
   def set_reel
     @reel = Reel.find_by(id: params[:reel_id])
   end
+
   def template_params
-    params.require(:template).permit(:file,:reel_id)
+    params.require(:template).permit(:file, :reel_id)
   end
 end

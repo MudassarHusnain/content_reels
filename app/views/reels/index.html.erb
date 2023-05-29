@@ -1,7 +1,7 @@
 <div class="wrapper mt-5 reel-listing">
   <div class="container">
     <div class="row g-1">
-     <%= render partial: "reels/reel", collection: @reels %>>
+      <%= render partial: "reels/reel", collection: @reels %>>
       <div class="col-md-3 ms-5">
         <div class="card p-3">
           <%= link_to new_reel_path(project_id: @project.id) do %>

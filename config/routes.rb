@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get "/auth/facebook/callback", to: "integration#facebook_callback"
   get "share_post", to: "integration#post_content"
   get "videos/render_video"
+  get 'text_to_video', to: 'reels#text_to_video'
+  post '/shotstack_callback', to: 'reels#text_to_video'
+
   resources :projects
   resources :reels do
     member do
@@ -23,7 +26,8 @@ Rails.application.routes.draw do
       get "editor", to: "reels#editor"
     end
   end
+  resources :reels, only: [:update]
   resources :templates
-  get 'openai',to: "chats#openai"
+  get "openai", to: "chats#openai"
   resources :videos, only: [:new, :create, :index]
 end

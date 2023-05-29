@@ -97,3 +97,5 @@ gem "font-awesome-sass", "~> 4.7"
 gem "sass-rails", "~> 6.0.0"
 gem "sassc"
 gem "ruby-openai"
+gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
+gem 'htmlbeautifier'

@@ -32,6 +32,12 @@ class ReelsController < ApplicationController
   end
 
   def update
+    @reel = Reel.find(params[:id])
+    @reel.update(reel_param)
+    respond_to do |format|
+      format.js { render nothing: true }
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -48,7 +54,23 @@ class ReelsController < ApplicationController
   end
 
   def editor
-    @templates=Template.all
+    @templates = Template.all
+  end
+
+  def text_to_video
+    script = params[:script_text]
+    shots = ShotstackService.new
+    audio_src = "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3"
+    id = shots.text_to_video(script, audio_src)
+    api_client = Shotstack::EditApi.new
+    # for now callback is not working
+    sleep(20)
+    @result = api_client.get_render(id, { data: false, merged: true }).response
+
+    # payload = JSON.parse(request.body.read)
+    # video_url = payload['response']['video']['url']
+    # # Handle the video URL, e.g., store it, display it, etc.
+    # head :ok
 
   end
 
@@ -56,6 +78,10 @@ class ReelsController < ApplicationController
 
   def set_reel
     @reel = Reel.find(params[:id])
+  end
+
+  def reel_param
+    params.require(:reel).permit(:script)
   end
 
   def reel_params
