@@ -28,6 +28,23 @@ class VideosController < ApplicationController
     end
   end
 
+  def render_video
+    shots = ShotstackService.new
+    #text = "jo marzi likh le"
+    string = "WHO.IS.IMRAN.KHAN"
+
+    audio_src = "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3"
+    shots.text_to_video(string, audio_src)
+    # shots.video_filter
+
+    #api_client = Shotstack::EditApi.new
+    # @id = shots.image_to_video
+
+    # @url = api_client.get_render(@id.id, { data: false, merged: true }).response
+
+    # puts "this is from controller #{@url.url}"
+  end
+
   def update
     if @video.update(video_params)
       redirect_to root_path, notice: "Video was successfully updated."

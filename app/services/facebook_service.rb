@@ -20,8 +20,7 @@ class FacebookService
   end
 
   def publish_video_on_group
-    id = @id
-    selected_value = id.split(',')
+    selected_value = @id.split(',')
     group_id = selected_value[0]
     user_access_token = @access_token
     endpoint = "https://graph.facebook.com/v16.0/#{group_id}/videos"
@@ -42,8 +41,7 @@ class FacebookService
   end
 
   def publish_video_on_page
-    id = @id
-    selected_value = id.split(',')
+    selected_value = @id.split(',')
     page_id = selected_value[0]
     user_access_token = @access_token
     response = HTTParty.get(

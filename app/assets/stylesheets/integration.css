@@ -1,104 +1,104 @@
-.center_align{
-    text-align: center
+.center_align {
+  text-align: center;
 }
 .titleBdr {
-    color: #fff;
-    font-size: 30px;
-    font-weight: 600;
-    position: relative;
-    text-align: center;
-    padding-top: 10px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  text-align: center;
+  padding-top: 10px;
 }
 
-.decoration{
-    text-decoration: none;
-    color: white;
+.decoration {
+  text-decoration: none;
+  color: white;
 }
 
-#cards_landscape_wrap-2{
-    text-align: center;
-    background: transparent;
-    padding-bottom: 20px;
+#cards_landscape_wrap-2 {
+  text-align: center;
+  background: transparent;
+  padding-bottom: 20px;
 }
-#cards_landscape_wrap-2 .container{
-    padding-bottom: 80px;
+#cards_landscape_wrap-2 .container {
+  padding-bottom: 80px;
 }
-#cards_landscape_wrap-2 a{
-    text-decoration: none;
-    outline: none;
+#cards_landscape_wrap-2 a {
+  text-decoration: none;
+  outline: none;
 }
 
-#cards_landscape_wrap-2 .card-flyer{
-    background: black;
-    margin-top: 50px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+#cards_landscape_wrap-2 .card-flyer {
+  background: black;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
 }
-#cards_landscape_wrap-2 .card-flyer:hover{
-    background: radial-gradient(#44006b, #ad1fff);
-    box-shadow: 0 0 20px 0 rgb(150,127,226);
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    margin-top: 50px;
+#cards_landscape_wrap-2 .card-flyer:hover {
+  background: radial-gradient(#44006b, #ad1fff);
+  box-shadow: 0 0 20px 0 rgb(150, 127, 226);
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-top: 50px;
 }
 
 .hr_2 {
-    color: white;
-    border: 1px solid #707070;
-    margin: 0 auto;
-    width: 85%;
+  color: white;
+  border: 1px solid #707070;
+  margin: 0 auto;
+  width: 85%;
 }
-.hr_1
-{
-    color: white;
-    border: 2px solid #E1A6FF;
-    margin: 0 auto;
-    width: 10%;
+.hr_1 {
+  color: white;
+  border: 2px solid #e1a6ff;
+  margin: 0 auto;
+  width: 10%;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
-.social_card{
-    border-radius: 10%;
-    background-color: black;
-    width: 130px;
-    height: 120px;
-    border: 1px solid black;
+.social_card {
+  border-radius: 10%;
+  background-color: black;
+  width: 130px;
+  height: 120px;
+  border: 1px solid black;
 }
-.social_card_image{
-    height: 40px; width: 40px; margin-top: 20px;
+.social_card_image {
+  height: 40px;
+  width: 40px;
+  margin-top: 20px;
 }
-.social_card_image_vertical{
-    height: 70px; width: 70px;
-}
-
-.my_connection_card{
-    border-radius: 4px;
-    background-color: black;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    padding: 0 40px 8px;
-    cursor: pointer;
+.social_card_image_vertical {
+  height: 70px;
+  width: 70px;
 }
 
-
-.my_connection_card h3{
-    font-weight: 600;
+.my_connection_card {
+  border-radius: 4px;
+  background-color: black;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 0 40px 8px;
+  cursor: pointer;
 }
 
-.my_connection_card img{
-    top: 20px;
-    margin-left: -30px;
-    margin-bottom: -70px;
+.my_connection_card h3 {
+  font-weight: 600;
+}
 
+.my_connection_card img {
+  top: 20px;
+  margin-left: -30px;
+  margin-bottom: -70px;
 }
 
 .social_button_align{
@@ -112,5 +112,3 @@ html {
     width: 94%;
 
 }
-
-

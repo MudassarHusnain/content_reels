@@ -10,9 +10,9 @@
     </div>
   <% end %>
 
-    <button type="button" class="position-absolute btn rounded btn-lg modal_buttons project-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Create Project
-    </button>
+  <button type="button" class="position-absolute btn rounded btn-lg modal_buttons project-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Create Project
+  </button>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -24,14 +24,14 @@
         <div class="modal-body">
           <div>
             <%= form.label :name, style: "display: block" %>
-            <%= form.text_field :name, class: "form-control form-control-lg w-100"%>
+            <%= form.text_field :name, class: "form-control form-control-lg w-100" %>
             <br>
           </div>
           <div>
-            <%= form.hidden_field :user_id,value:current_user.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
           </div>
           <div class="modal-footer col-md-12">
-            <%= form.submit class: 'btn btn-dark mt-3',style: 'display:center ' %>
+            <%= form.submit class: 'btn btn-dark mt-3', style: 'display:center ' %>
           </div>
         </div>
       </div>

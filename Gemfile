@@ -17,9 +17,11 @@ gem "puma", "~> 5.0"
 #user for google oauth
 gem "omniauth"
 gem "omniauth-google-oauth2", "~> 1.1", ">= 1.1.1"
-gem "activerecord-session_store"
+
 gem "google-api-client", "~> 0.53.0"
 gem "googleauth"
+#use for shotstack
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -33,7 +35,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # To edit videos
-gem 'shotstack', '~> 0.2.2'
+gem "shotstack", "~> 0.2.2"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
@@ -88,14 +90,6 @@ gem "bootstrap", "~> 5.0.2"
 gem "httparty"
 gem "koala"
 gem "omniauth-rails_csrf_protection"
-
-
-gem 'rack-cors'
-gem 'omniauth-facebook', '~> 8.0'
-gem 'activerecord-session_store'
-gem 'font-awesome-sass', '~> 4.7'
-gem 'sass-rails', '~> 6.0.0'
-gem 'sassc'
 gem 'rest-client'
 gem 'mime-types', '~> 3.1'
 gem 'shotstack', '~> 0.2.2'
@@ -103,3 +97,11 @@ gem 'delayed_job', '~> 4.1', '>= 4.1.2'
 gem 'delayed_job_active_record'
 gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 gem "ruby-openai"
+gem "rack-cors"
+gem "omniauth-facebook", "~> 8.0"
+gem "activerecord-session_store"
+gem "font-awesome-sass", "~> 4.7"
+gem "sass-rails", "~> 6.0.0"
+gem "sassc"
+gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
+gem 'htmlbeautifier'
