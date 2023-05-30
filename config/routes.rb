@@ -17,15 +17,23 @@ Rails.application.routes.draw do
   get "/auth/facebook/callback", to: "integration#facebook_callback"
   get "share_post", to: "integration#post_content"
   get "videos/render_video"
-  get "stackio_integration/create"
 
-  resources :projects
-  resources :reels
-
-  get "/audio/save", to: "record_audio#show"
-  get "record_audio/new"
   get "generate_text", to: "chat_gpt#new"
   get "send_response", to: "chat_gpt#send_to_chat"
+  get "text_to_video", to: "reels#text_to_video"
+  post '/shotstack_callback', to: 'reels#text_to_video'
+  get "stackio_integration/create"
 
+
+  resources :projects
+  resources :reels do
+    member do
+      get "script", to: "reels#script"
+      get "editor", to: "reels#editor"
+    end
+  end
+  
+  resources :templates
+  
   resources :videos, only: [:new, :create, :index]
 end

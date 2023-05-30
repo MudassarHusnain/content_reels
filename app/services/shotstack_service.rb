@@ -13,12 +13,11 @@ class ShotstackService
     title_asset = []
     track = []
     start = 0
-    length = 3
+    length = 6
     script.each_with_index do |text, index|
       title_asset[index] = Shotstack::TitleAsset.new(
-
-        style: "minimal",
         text: text,
+        color:"#000000"
 
       )
       title_clip[index] = Shotstack::Clip.new(
@@ -32,26 +31,30 @@ class ShotstackService
       start += length
     end
     timeline = Shotstack::Timeline.new(
-
+      background: "#FFFFFF",
       soundtrack: soundtrack,
       tracks: track,
     )
     output = Shotstack::Output.new(
       format: "mp4",
       resolution: "hd",
+
     )
     edit = Shotstack::Edit.new(
       timeline: timeline,
       output: output,
+      callback: "https://www.youtube.com/watch?v=qGPtVVYNLCs"
     )
     begin
       response = api_client.post_render(edit).response
+      id=response.id
+      puts "id is #{id}"
     rescue => error
       abort("Request failed: #{error.message}")
     end
-    puts response.message
     puts ">> Now check the progress of your render by running:"
     puts ">> ruby examples/status.rb #{response.id}"
+    return id
   end
 
   def video_filter

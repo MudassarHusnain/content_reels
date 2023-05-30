@@ -3,13 +3,16 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
-import "./audio/record_audio"
-import "./audio/play_audio"
+import "./best_in_place"
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery3
-//= require select2
-//= require select2_init
-//= require popper
+//= require jquery
+//= require best_in_place
+//= require jquery-ui
+//= require best_in_place.jquery-ui
 
-
+$(document).ready(function() {
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
+});

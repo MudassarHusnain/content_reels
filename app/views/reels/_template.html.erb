@@ -1,0 +1,19 @@
+<div class="col-md-6">
+  <div class="card mb-3">
+    <% if template.file.attached? && template.file.content_type.include?("video") %>
+      <video controls class="card-img-top" width="60%">
+        <source src="<%= url_for(template.file) %>" type="<%= template.file.content_type %>">
+      </video>
+    <% elsif template.file.attached? && template.file.content_type.include?("audio") %>
+      <audio controls class="card-img-top" width="60%">
+        <source src="<%= url_for(template.file) %>" type="<%= template.file.content_type %>">
+      </audio>
+    <% elsif template.file.attached? && template.file.content_type.include?("image") %>
+      <%= image_tag url_for(template.file) %>
+    <% else %>
+      <div class="card-body">
+        <p class="card-text">No video file attached and file is not supported.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
