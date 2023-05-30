@@ -1,15 +1,19 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_action :verify_authenticity_token
-
+  include Integration
+  # skip_before_action :verify_authenticity_token
   def google_oauth2
-    @user = from_omniauth(request.env["omniauth.auth"])
+    @user = User.from_omniauth(request.env["omniauth.auth"], current_user)
     redirect_to new_video_path
   end
 
-  private
-  def from_omniauth(auth)
-    current_user.youtube_token = auth.credentials.token
-    current_user.save
+  def facebook
+    if check_session
+      redirect_to callback_integration_path
+    else
+      @user = User.from_fb_omniauth(request.env["omniauth.auth"], current_user)
+      redirect_to callback_integration_path
+    end
+
   end
 
 end

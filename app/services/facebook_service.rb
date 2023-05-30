@@ -4,17 +4,12 @@ class FacebookService
   APP_SECRET = Rails.application.credentials[:facebook][:app_secret]
   URL = Rails.application.credentials[:host]
   def initialize(*args)
-    @code = args.first[:code] if args.first[:code]
     @id = args.first[:id] if args.first[:id]
     @access_token = args.first[:token] if args.first[:token]
   end
 
-  def self.login
-    "https://www.facebook.com/v2.3/dialog/oauth?client_id=#{APP_ID}&redirect_uri=#{URL}/auth/facebook/callback&scope=email"
-  end
 
   def facebook_call(token)
-
     access_token = token
     groups_list = "https://graph.facebook.com/v16.0/me/groups?access_token=#{access_token}"
     pages_list = "https://graph.facebook.com/v16.0/me/accounts?access_token=#{access_token}"
@@ -70,14 +65,4 @@ class FacebookService
     HTTParty.post(url, query: query_params)
   end
 
-  def get_token
-    token_url = "https://graph.facebook.com/v16.0/oauth/access_token"
-    response = HTTParty.get(token_url, query: {
-                                         client_id: APP_ID,
-                                         redirect_uri: "#{URL}/auth/facebook/callback",
-                                         client_secret: APP_SECRET,
-                                         code: @code,
-                                       })
-    response["access_token"]
-  end
 end
