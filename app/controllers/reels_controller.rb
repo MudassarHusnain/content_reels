@@ -62,21 +62,16 @@ class ReelsController < ApplicationController
     @templates = @reel.templates.last
     script = params[:script_text]
     shots = ShotstackService.new
-
     audio_src = rails_blob_url(@templates.file, disposition: :inline)
-
     id = shots.text_to_video(script, audio_src)
     api_client = Shotstack::EditApi.new
     # for now callback is not working
     sleep(20)
-
     @result = api_client.get_render(id, { data: false, merged: true }).response
-
     # payload = JSON.parse(request.body.read)
     # video_url = payload['response']['video']['url']
     # # Handle the video URL, e.g., store it, display it, etc.
     # head :ok
-
   end
 
   private
