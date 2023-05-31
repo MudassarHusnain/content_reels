@@ -1,0 +1,24 @@
+<div>
+  <button class="btn btn-lg bg-dark text-light record-audio">Record Audio</button>
+</div>
+<div class="record-audio-container display-none">
+  <%= render partial: "templates/record_microphone_audio"%>
+</div>
+<div class="col-md-6">
+  <div class="card mb-3">
+    <%@templates.each do |template| %>
+      <% if template.file.attached? && template.file.content_type.include?("audio") %>
+        <audio controls class="card-img-top" width="60%">
+          <source src="<%= url_for(template.file) %>" type="<%= template.file.content_type %>">
+        </audio>
+      <% end %>
+    <%end %>
+
+  </div>
+</div>
+<div>
+  <button class="btn btn-lg bg-dark text-light text-to-speech">Text To Speech</button>
+</div>
+<div class="text-to-speech-container display-none">
+  <%= render partial: "templates/audio_index"%>
+</div>

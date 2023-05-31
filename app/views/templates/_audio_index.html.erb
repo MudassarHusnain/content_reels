@@ -1,0 +1,18 @@
+<br>
+<div class="container">
+  <%= form_tag(text_to_speech_path, method: :get) do %>
+    <label style="cursor: auto">Select Voice:</label>
+    <%= select_tag :voice, options_for_select(@voices.pluck("name", "voice_id"))  ,{prompt: 'Select Voice'} %>
+    <br>
+    <br>
+    <label class="">Enter Text</label>
+    <br>
+    <%= hidden_field_tag :reel_id, params[:id] %>
+    <%= text_area_tag :text%>
+    <br>
+    <%= submit_tag 'Submit', class: 'mk-button left-corners right-corners blue-button', id:"submit-btn"%>
+  <% end %>
+</div>
+<br>
+<br>
+<br>

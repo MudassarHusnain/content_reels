@@ -427,3 +427,9 @@ body {
   text-decoration-color: #c16bed;
   color: white;
 }
+.display-none{
+  display: none;
+}
+.display-block{
+  display: block;
+}

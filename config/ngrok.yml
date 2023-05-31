@@ -1,0 +1,6 @@
+version: 2
+authtoken: 2PVTY5m6uXgYkLvzPeMP1p9u5BL_6915DvgLUvsniRC3DNqUG
+tunnels:
+  rails:
+    addr: 3000
+    proto: http

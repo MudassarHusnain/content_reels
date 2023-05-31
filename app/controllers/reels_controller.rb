@@ -1,5 +1,5 @@
 class ReelsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :load_data
   before_action :set_reel, only: %i[ show edit update destroy script editor ]
 
   def index
@@ -54,18 +54,22 @@ class ReelsController < ApplicationController
   end
 
   def editor
-
     @templates = @reel.templates.all
   end
 
   def text_to_video
+    @reel = Reel.find_by(id: params[:reel_id])
+    @templates = @reel.templates.last
     script = params[:script_text]
     shots = ShotstackService.new
-    audio_src = "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3"
+
+    audio_src = rails_blob_url(@templates.file, disposition: :inline)
+
     id = shots.text_to_video(script, audio_src)
     api_client = Shotstack::EditApi.new
     # for now callback is not working
     sleep(20)
+
     @result = api_client.get_render(id, { data: false, merged: true }).response
 
     # payload = JSON.parse(request.body.read)
@@ -87,5 +91,10 @@ class ReelsController < ApplicationController
 
   def reel_params
     params.require(:reel).permit(:video_set, :keywords, :no_of_video, :platform, :cta, :project_id)
+  end
+
+  def load_data
+    response = HTTParty.get("https://api.elevenlabs.io/v1/voices")
+    @voices = response.parsed_response["voices"]
   end
 end
