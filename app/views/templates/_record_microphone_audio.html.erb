@@ -1,0 +1,7 @@
+<%= form_tag(microphone_path, method: :post, id: 'audio-form') do %>
+  <%= button_tag 'Start Recording', id: 'js-start', type: 'button' %>
+  <%= button_tag 'Stop Recording', id: 'js-stop', type: 'button' %>
+  <%= hidden_field_tag :reel_id, params[:id] %>
+  <%= hidden_field_tag 'audio_blob', nil, id: 'audio' %>
+  <%= submit_tag 'Save Audio' %>
+<% end %>

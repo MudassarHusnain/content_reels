@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   end
   
   root "home#index"
-  get "text_to_speech", to: "text_to_speech#text_to_speech"
-  get "text_to_speech/index"
   get "integration", to: "integration#index"
   get "callback_integration", to: "integration#facebook_callback"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "disconnect_facebook", to: "integration#destroy_session"
   get "share_post", to: "integration#post_content"
+  post "microphone", to: "templates#show_microphone"
+  get "record_audio", to: "templates#record_microphone_audionew"
+  get "text_to_speech", to: "templates#text_to_speech"
+  get "templates/audio_index"
   get "videos/render_video"
 
   get "generate_text", to: "chat_gpt#new"

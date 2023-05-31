@@ -8,6 +8,7 @@ class ShotstackService
     soundtrack = Shotstack::Soundtrack.new(
       effect: "fadeInFadeOut",
       src: audio_src,
+
     )
     title_clip = []
     title_asset = []
@@ -17,7 +18,7 @@ class ShotstackService
     script.each_with_index do |text, index|
       title_asset[index] = Shotstack::TitleAsset.new(
         text: text,
-        color:"#000000"
+        color: "#000000",
 
       )
       title_clip[index] = Shotstack::Clip.new(
@@ -43,11 +44,11 @@ class ShotstackService
     edit = Shotstack::Edit.new(
       timeline: timeline,
       output: output,
-      callback: "https://www.youtube.com/watch?v=qGPtVVYNLCs"
+      callback: "https://www.youtube.com/watch?v=qGPtVVYNLCs",
     )
     begin
       response = api_client.post_render(edit).response
-      id=response.id
+      id = response.id
       puts "id is #{id}"
     rescue => error
       abort("Request failed: #{error.message}")

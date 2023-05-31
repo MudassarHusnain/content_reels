@@ -1,4 +1,4 @@
-var recordedAudio = document.getElementById('recordedAudio');
+var recordedAudio = document.getElementById("recordedAudio");
 function playRecordedAudio() {
-    recordedAudio.play();
+  recordedAudio.play();
 }
