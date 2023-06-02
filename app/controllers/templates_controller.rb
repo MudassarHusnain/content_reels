@@ -1,9 +1,6 @@
 class TemplatesController < ApplicationController
   before_action :set_reel, only: [:new, :create]
 
-  def index
-  end
-
   def new
     @template = @reel.templates.new
   end
@@ -53,9 +50,6 @@ class TemplatesController < ApplicationController
     @template = @reel.templates.new(recording_data)
     @template.save
     redirect_to request.referer
-  end
-
-  def record_microphone_audio
   end
 
   private

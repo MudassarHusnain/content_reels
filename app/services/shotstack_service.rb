@@ -1,7 +1,6 @@
 require "net/http"
 
 class ShotstackService
-  
   def text_to_video(text, audio_src)
     script = text.split(".")
     api_client = Shotstack::EditApi.new
@@ -71,7 +70,6 @@ class ShotstackService
     ]
 
     api_client = Shotstack::EditApi.new
-
     soundtrack = Shotstack::Soundtrack.new(
       effect: "fadeInFadeOut",
       src: "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/freeflow.mp3",
@@ -129,7 +127,6 @@ class ShotstackService
       )
 
       title_clips.push(title_clip)
-
       trim = cut - 1
       cut = trim + length + 1
       start = trim
@@ -202,7 +199,6 @@ class ShotstackService
     end
 
     track1 = Shotstack::Track.new(clips: clips)
-
     timeline = Shotstack::Timeline.new(
       background: "#000000",
       soundtrack: soundtrack,
@@ -234,5 +230,4 @@ class ShotstackService
     puts ">> ruby examples/status.rb #{response.url}"
     return response
   end
-  
 end

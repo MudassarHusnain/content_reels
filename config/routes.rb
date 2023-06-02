@@ -4,8 +4,7 @@ Rails.application.routes.draw do
     # get "users", to: "devise/sessions#new"
     get "users", to: "devise/sessions#new"
     get "/users/sign_out" => "devise/sessions#destroy"
-  end
-  
+  end  
   root "home#index"
   get "integration", to: "integration#index"
   get "callback_integration", to: "integration#facebook_callback"
@@ -17,14 +16,11 @@ Rails.application.routes.draw do
   get "text_to_speech", to: "templates#text_to_speech"
   get "templates/audio_index"
   get "videos/render_video"
-
   get "generate_text", to: "chat_gpt#new"
   get "send_response", to: "chat_gpt#send_to_chat"
   get "text_to_video", to: "reels#text_to_video"
   post '/shotstack_callback', to: 'reels#text_to_video'
   get "stackio_integration/create"
-
-
   resources :projects
   resources :reels do
     member do
@@ -32,8 +28,6 @@ Rails.application.routes.draw do
       get "editor", to: "reels#editor"
     end
   end
-  
-  resources :templates
-  
+  resources :templates  
   resources :videos, only: [:new, :create, :index]
 end

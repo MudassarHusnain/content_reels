@@ -14,8 +14,6 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '1610613d2ab75e5f3da390ae96e8e83886569d71c755e91f88762fcf1290faf2c08a4e7861f8a1abb248de6166d0e00ed30da2f978d6c9adf884132551e4c2fc'
-
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -25,13 +23,10 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
-
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
-
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -41,7 +36,6 @@ Devise.setup do |config|
                   Rails.application.credentials[:google][:client_secret], { scope: "userinfo.email, youtube" }
   config.omniauth :facebook, Rails.application.credentials[:facebook][:app_id],
                   Rails.application.credentials[:facebook][:app_secret]
-
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for

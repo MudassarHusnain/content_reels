@@ -6,18 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="./Mp3LameEncoder.js"></script>
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
-  <%if current_user.present? %>
-  <%=render 'layouts/navbar'%>
+    <%if current_user.present? %>
+      <%=render 'layouts/navbar'%>
     <%end %>
-  <%=render 'layouts/messages'%>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
+    <%=render 'layouts/messages'%>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

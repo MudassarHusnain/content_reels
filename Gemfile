@@ -105,3 +105,4 @@ gem "sass-rails", "~> 6.0.0"
 gem "sassc"
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem 'htmlbeautifier'
+gem 'pexels', '~> 0.5.0'

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $(".fa-headphones").on("click", function () {
+  $(".headphones").on("click", function () {
     $(".video-list").toggleClass("display-none");
     $(".audio-list").toggleClass("display-block");
   });
