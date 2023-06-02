@@ -1,13 +1,10 @@
 class IntegrationController < ApplicationController
   require 'httparty'
   include Integration
-
   def index
-
     if check_session
       connected
     end
-
   end
 
   def facebook_callback
@@ -30,5 +27,4 @@ class IntegrationController < ApplicationController
     disconnected
     redirect_to integration_path
   end
-
 end

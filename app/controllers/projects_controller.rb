@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_project, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!,:set_project, only: %i[ show edit update destroy ]
   def index
     @projects = Project.order("created_at DESC")
   end
@@ -12,7 +10,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-
     respond_to do |format|
       if @project.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
@@ -20,9 +17,6 @@ class ProjectsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def show
   end
 
   def edit
@@ -40,7 +34,6 @@ class ProjectsController < ApplicationController
       end
     end
   end
-
   def destroy
     respond_to do |format|
       if @project.destroy
@@ -51,7 +44,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
   def set_project
     @project = Project.find(params[:id])
   end
