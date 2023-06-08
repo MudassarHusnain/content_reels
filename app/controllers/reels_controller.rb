@@ -49,8 +49,6 @@ class ReelsController < ApplicationController
     id = shots.text_to_video(script, audio_src)
     api_client = Shotstack::EditApi.new
     sleep(20)
-    image=PexelService.new
-    image.search_photo
     @result = api_client.get_render(id, { data: false, merged: true }).response
   end
 
