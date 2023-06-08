@@ -14,11 +14,9 @@ class PexelService
 
   def generate_videos
     client = Pexels::Client.new(Pexel_KEY)
-    response = []
     videos = client.videos.search(@video_text, per_page: 5)
-    videos.each do |video|
+    videos.each_with_object([]) do |video, response|
       response << video.files[0].link
     end
-    response
   end
 end
