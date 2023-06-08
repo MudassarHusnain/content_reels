@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get "videos/render_video"
   get "generate_text", to: "chat_gpt#new"
   get "send_response", to: "chat_gpt#send_to_chat"
+  post "search_image", to: "templates#image_search"
+  post "search_video", to: "templates#video_search"
   get "text_to_video", to: "reels#text_to_video"
   post '/shotstack_callback', to: 'reels#text_to_video'
   get "stackio_integration/create"

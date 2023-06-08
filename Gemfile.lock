@@ -451,6 +451,7 @@ DEPENDENCIES
   ruby-openai
   sass-rails (~> 6.0.0)
   sassc
+  sassc-rails
   select2-rails (~> 4.0, >= 4.0.3)
   selenium-webdriver
   shotstack (~> 0.2.2)

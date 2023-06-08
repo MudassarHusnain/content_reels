@@ -30,7 +30,13 @@ class TemplatesController < ApplicationController
       }
       @reel = Reel.find_by(id: params[:reel_id])
       @template = @reel.templates.new(audio_data)
-      @template.save
+      respond_to do |format|
+        if @template.save
+          format.html { redirect_to request.referer, notice: "Audio was successfully Created."}
+        else
+          render "new"
+        end
+      end
     rescue StandardError => e
       render plain: "Error: " + e.error_message, status: :unprocessable_entity
     end
@@ -48,8 +54,29 @@ class TemplatesController < ApplicationController
     }
     @reel = Reel.find_by(id: params[:reel_id])
     @template = @reel.templates.new(recording_data)
-    @template.save
-    redirect_to request.referer
+    respond_to do |format|
+      if @template.save
+        format.html { redirect_to request.referer, notice: "Audio was successfully Created."}
+      else
+        render "new"
+      end
+    end
+  end
+
+  def image_search
+    image = PexelService.new(image: params[:image_text])
+    @image_url = image.generate_images
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('show_data', partial: 'templates/image_show', :locals => {:show_images => @image_url}) }
+    end
+  end
+
+  def video_search
+    video = PexelService.new(video: params[:video_text])
+    @video_url = video.generate_videos
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('show_data', partial: 'templates/image_show', :locals => { :show_video => @video_url }) }
+    end
   end
 
   private

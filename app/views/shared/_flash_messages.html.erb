@@ -1,0 +1,15 @@
+<% flash.each do |name, msg| %>
+  <div id='flash'>
+   <script>
+     <% if flash[:success] || flash[:notice] %>
+        toastr.success('<span><%= flash[:notice] %></span>')
+     <% end %>
+     <% if flash[:info] %>
+        toastr.info('<span><%= flash[:info] %></span>')
+     <% end %>
+     <% if flash[:danger] || flash[:alert] %>
+        toastr.error('<span><%= flash[:alert] %></span>')
+     <% end %>
+   </script>
+  </div>
+<% end %>

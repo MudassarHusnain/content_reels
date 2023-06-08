@@ -1,6 +1,7 @@
 .center_align {
-  text-align: center;
+  text-align: center
 }
+
 .titleBdr {
   color: #fff;
   font-size: 30px;
@@ -20,9 +21,11 @@
   background: transparent;
   padding-bottom: 20px;
 }
+
 #cards_landscape_wrap-2 .container {
   padding-bottom: 80px;
 }
+
 #cards_landscape_wrap-2 a {
   text-decoration: none;
   outline: none;
@@ -36,8 +39,9 @@
   -ms-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
 }
+
 #cards_landscape_wrap-2 .card-flyer:hover {
   background: radial-gradient(#44006b, #ad1fff);
   box-shadow: 0 0 20px 0 rgb(150, 127, 226);
@@ -55,9 +59,10 @@
   margin: 0 auto;
   width: 85%;
 }
+
 .hr_1 {
   color: white;
-  border: 2px solid #e1a6ff;
+  border: 2px solid #E1A6FF;
   margin: 0 auto;
   width: 10%;
 }
@@ -73,20 +78,41 @@ html {
   height: 120px;
   border: 1px solid black;
 }
+
 .social_card_image {
   height: 40px;
   width: 40px;
   margin-top: 20px;
 }
+
 .social_card_image_vertical {
+  position: relative;
+  left: -48%;
   height: 70px;
   width: 70px;
 }
 
+.social_card_image_vertical1 {
+  position: relative;
+  /*left: -48%;*/
+  height: 70px;
+  width: 10px;
+}
+
 .my_connection_card {
+  position: relative;
   border-radius: 4px;
   background-color: black;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  padding: 0 40px 8px;
+  cursor: pointer;
+}
+
+.my_connection_card1 {
+  position: relative;
+  border-radius: 4px;
+  background-color: black;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
   padding: 0 40px 8px;
   cursor: pointer;
 }
@@ -96,19 +122,30 @@ html {
 }
 
 .my_connection_card img {
-  top: 20px;
+  top: 10px;
   margin-left: -30px;
   margin-bottom: -70px;
-}
-
-.social_button_align{
-    margin-top: -65px;
-    margin-right: -20px;
-}
-.hr_social{
-    color: white;
-    border: 1px solid #707070;
-    margin: 0 0 0 0;
-    width: 94%;
 
 }
+
+.social_button_align {
+  position: relative;
+  /*top: 10%;*/
+  margin-top: -65px;
+  left: 93%;
+}
+
+.hr_social {
+  color: white;
+  border: 1px solid #707070;
+  margin: 0 0 0 0;
+  width: 90%;
+
+}
+.logo-size{
+  height: 40px;
+  width: 40px;
+  margin-top: 20px;
+}
+
+

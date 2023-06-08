@@ -42,22 +42,21 @@
   backdrop-filter: saturate(200%) blur(25px);
 }
 .social_connect_button {
+  text-align: center;
   height: 50px;
-  width: 100%;
+  width: 92%;
   background: radial-gradient(#44008b, #ad1cff);
   float: left;
   border: 0px;
   margin-bottom: 20px;
-  color: white;
   box-shadow: 0 0 1px #ccc;
   -webkit-transition-duration: 0.3s;
   -webkit-transition-timing-function: linear;
-  box-shadow: 0px 0 0 #31708f inset;
 }
 
 .social_connect_button:hover {
-  box-shadow: 500px 0 0 white inset;
-  text-decoration-color: #c16bed;
+  color: black;
+  box-shadow: 500px 0 0 #ad4eff inset;
 }
 .forgot-link {
   color: #e1a6ff;
