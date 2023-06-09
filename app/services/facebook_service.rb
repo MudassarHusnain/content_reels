@@ -19,12 +19,13 @@ class FacebookService
 
   end
 
-  def publish_video_on_group
+  def publish_video_on_group(reel_id)
     selected_value = @id.split(',')
     group_id = selected_value[0]
     user_access_token = @access_token
     endpoint = "https://graph.facebook.com/v16.0/#{group_id}/videos"
-    video_url = 'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4'
+    @url = Reel.find(reel_id).url
+    video_url = @url
     response = HTTParty.post(endpoint,
                              query: {
                                access_token: user_access_token,
@@ -40,7 +41,7 @@ class FacebookService
 
   end
 
-  def publish_video_on_page
+  def publish_video_on_page(reel_id)
     selected_value = @id.split(',')
     page_id = selected_value[0]
     user_access_token = @access_token
@@ -53,7 +54,8 @@ class FacebookService
     page = data.find { |page| page['id'] == page_id }
     page_access_token = page['access_token']
     p_access_token = page_access_token
-    video_url = 'https://cdn.shotstack.io/au/stage/5om1wwit30/e0a3ed51-4fc6-42f8-8f08-1b284288d04c.mp4?_ga=2.74237458.1604961035.1684158384-1191760858.1682681772&_gl=1*1n9it0t*_ga*MTE5MTc2MDg1OC4xNjgyNjgxNzcy*_ga_0KPVTRT370*MTY4NDQwNDAzMy4yMS4xLjE2ODQ0MTA0NjEuMC4wLjA'
+    @url = Reel.find(reel_id).url
+    video_url = @url
     url = "https://graph.facebook.com/v16.0/#{page_id}/videos"
     query_params = {
       title: "New Delayed Job Test Video",

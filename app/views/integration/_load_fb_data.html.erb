@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-lg text-dark border project_view1 modal_buttons" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Post FB
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-light" style="width: 800px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Post FB</h5>
+        <button type="button" class="btn-close ps-5" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_tag(share_post_path, method: :get) do %>
+          <label style="cursor: auto; color: white">Select Data:</label>
+          <%= select_tag :id, grouped_options_for_select(categorize_data) ,{prompt: 'Select Data'}  %>
+          <%= hidden_field_tag :reel_id, params[:reel_id]  %>
+          <div class="modal-footer col-md-12">
+          <%= submit_tag "Post", class: 'mk-button left-corners right-corners blue-button', id:"submit-btn"%>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

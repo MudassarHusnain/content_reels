@@ -41,6 +41,9 @@ class ReelsController < ApplicationController
   end
 
   def text_to_video
+    fb_token = current_user.facebook_token
+    fetch_data = FacebookService.new({token: fb_token})
+    @data = fetch_data.facebook_call(fb_token)
     @reel = Reel.find_by(id: params[:reel_id])
     @templates = @reel.templates.last
     script = params[:script_text]
@@ -50,6 +53,8 @@ class ReelsController < ApplicationController
     api_client = Shotstack::EditApi.new
     sleep(20)
     @result = api_client.get_render(id, { data: false, merged: true }).response
+    @reel.url = @result.url
+    @reel.save
   end
 
   private
