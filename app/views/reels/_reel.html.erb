@@ -4,8 +4,7 @@
       <h1 class="content-reel">Content Reel</h1>
     </div>
     <div class="product-details">
-
-      <%= best_in_place reel, :video_set %>
+      <%=reel.video_set %>
       <br/>
       <%= link_to "Edit", script_reel_path(id: reel.id), class: "btn btn-dark" %>
       <%= link_to "Delete", reel, data: { turbo_method: :delete }, class: "btn btn-danger" %>
