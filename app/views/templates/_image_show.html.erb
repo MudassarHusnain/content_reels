@@ -23,10 +23,31 @@
   <br>
   <%if @video_url.present? %>
     <% @video_url.each do |v_url| %>
-      <%= video_tag v_url, controls: true, width: 340, height: 160 %>
+      <%= video_tag v_url, controls: true, width: 340, height: 160, id:'video_url' %>
 <% end %>
   <%end %>
 </div>
+
+<script>
+    var urlArray = [];
+    $('video').on('click', function() {
+        let videoUrl = $(this).attr('src');
+        console.log(videoUrl);
+        urlArray.push(videoUrl);
+        console.log(urlArray);
+        $.ajax({
+            url: '/send_url',
+            method: 'GET',
+            data: { dataUrl: urlArray },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+</script>
 
 
 

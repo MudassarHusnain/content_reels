@@ -36,3 +36,4 @@ $(document).ready(function () {
     $(".text-to-speech-container").toggleClass("display-block")
   });
 });
+

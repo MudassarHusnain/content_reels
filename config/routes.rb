@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post "search_image", to: "templates#image_search"
   post "search_video", to: "templates#video_search"
   get "text_to_video", to: "reels#text_to_video"
+  get "send_url", to: "reels#fetch_url"
   post '/shotstack_callback', to: 'reels#text_to_video'
   get "stackio_integration/create"
   resources :projects

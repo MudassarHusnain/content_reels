@@ -41,6 +41,7 @@ class ReelsController < ApplicationController
   end
 
   def text_to_video
+    @data = session[:data_url]
     fb_token = current_user.facebook_token
     fetch_data = FacebookService.new({token: fb_token})
     @data = fetch_data.facebook_call(fb_token)
@@ -55,6 +56,10 @@ class ReelsController < ApplicationController
     @result = api_client.get_render(id, { data: false, merged: true }).response
     @reel.url = @result.url
     @reel.save
+  end
+
+  def fetch_url
+    session[:data_url] = params[:dataUrl]
   end
 
   private
