@@ -7,11 +7,11 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  config.web_console.whitelisted_ips = '10.28.85.59'
-  config.web_console.whitelisted_ips = '10.28.85.59'
+  config.web_console.whitelisted_ips = "10.28.85.59"
+  config.web_console.whitelisted_ips = "10.28.85.59"
   # Do not eager load code on boot.
   config.eager_load = false
-   # config.hosts << "aa23-110-93-205-130.ngrok-free.app"  # Replace with your ngrok URL
+  config.hosts << "5787-110-93-205-130.ngrok-free.app"  # Replace with your ngrok URL
   # Show full error reports.
   config.consider_all_requests_local = true
   # Enable server timing
@@ -24,7 +24,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -45,7 +45,7 @@ Rails.application.configure do
   config.active_support.deprecation = :log
   config.debug_exception_response_format = :api
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
 

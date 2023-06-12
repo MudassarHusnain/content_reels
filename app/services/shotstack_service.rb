@@ -1,9 +1,32 @@
 require "net/http"
 
 class ShotstackService
-  def text_to_video(text, audio_src)
-    script = text.split(".")
+  def text_to_video(text, audio_src,video)
     api_client = Shotstack::EditApi.new
+    videos =video
+    clips = []
+    start = 0
+    length = 6
+
+    videos.each_with_index do |video, index|
+      video_asset = Shotstack::VideoAsset.new(
+        src: video,
+        )
+
+      clip = Shotstack::Clip.new(
+        asset: video_asset,
+        length: length,
+        start: start,
+        effect: "zoomIn",
+        )
+
+      start += length
+      clips.push(clip)
+    end
+
+
+    script = text.split(".")
+
     soundtrack = Shotstack::Soundtrack.new(
       effect: "fadeInFadeOut",
       src: audio_src,
@@ -14,6 +37,7 @@ class ShotstackService
     track = []
     start = 0
     length = 6
+    size=0
     script.each_with_index do |text, index|
       title_asset[index] = Shotstack::TitleAsset.new(
         text: text,
@@ -28,8 +52,10 @@ class ShotstackService
 
       )
       track[index] = Shotstack::Track.new(clips: [title_clip[index]])
+      size=size+1
       start += length
     end
+    track[size] = Shotstack::Track.new(clips: clips)
     timeline = Shotstack::Timeline.new(
       background: "#FFFFFF",
       soundtrack: soundtrack,
@@ -161,7 +187,66 @@ class ShotstackService
     puts ">> Now check the progress of your render by running:"
     puts ">> ruby examples/status.rb #{response.id}"
   end
+  def generate_video(video)
+    videos =video
+    api_client = Shotstack::EditApi.new
 
+    soundtrack = Shotstack::Soundtrack.new(
+      effect: "fadeInFadeOut",
+      src: "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/gangsta.mp3",
+    )
+    clips = []
+    start = 0
+    length = 1.5
+
+    videos.each_with_index do |video, index|
+      video_asset = Shotstack::VideoAsset.new(
+        src: video,
+      )
+
+      clip = Shotstack::Clip.new(
+        asset: video_asset,
+        length: length,
+        start: start,
+        effect: "zoomIn",
+      )
+
+      start += length
+      clips.push(clip)
+    end
+
+    track1 = Shotstack::Track.new(clips: clips)
+    timeline = Shotstack::Timeline.new(
+      background: "#000000",
+      soundtrack: soundtrack,
+      tracks: [track1],
+    )
+
+    output = Shotstack::Output.new(
+      format: "mp4",
+      resolution: "sd",
+      fps: 30,
+    )
+
+    edit = Shotstack::Edit.new(
+      timeline: timeline,
+      output: output,
+    )
+
+    begin
+      response = api_client.post_render(edit).response
+
+      id = response.id
+      response = api_client.get_render(id, { data: false, merged: true }).response
+    rescue => error
+      abort("Request failed: #{error.message}")
+    end
+
+    puts response
+    puts ">> Now check the progress of your render by running:"
+    puts ">> ruby examples/status.rb #{response.url}"
+    return response
+  end
   def image_to_video
     images = [
       "https://i.ibb.co/wzhD5J0/MG-2038.jpg",
