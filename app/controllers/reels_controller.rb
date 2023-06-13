@@ -53,6 +53,7 @@ class ReelsController < ApplicationController
     audio_src = rails_blob_url(@templates.file, disposition: :inline)
 
     id = shots.text_to_video(script, audio_src,session[:videos_url])
+    session[:videos_url]=[]
     api_client = Shotstack::EditApi.new
     sleep(30)
     @result = api_client.get_render(id, { data: false, merged: true }).response
@@ -60,9 +61,6 @@ class ReelsController < ApplicationController
     @reel.save
   end
 
-  def fetch_url
-    session[:videos_url] = params[:dataUrl]
-  end
 
   private
 

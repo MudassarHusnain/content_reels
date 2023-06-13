@@ -32,7 +32,7 @@ class TemplatesController < ApplicationController
       @template = @reel.templates.new(audio_data)
       respond_to do |format|
         if @template.save
-          format.html { redirect_to request.referer, notice: "Audio was successfully Created."}
+          format.html { redirect_to request.referer, notice: "Audio was successfully Created." }
         else
           render "new"
         end
@@ -56,7 +56,7 @@ class TemplatesController < ApplicationController
     @template = @reel.templates.new(recording_data)
     respond_to do |format|
       if @template.save
-        format.html { redirect_to request.referer, notice: "Audio was successfully Created."}
+        format.html { redirect_to request.referer, notice: "Audio was successfully Created." }
       else
         render "new"
       end
@@ -67,13 +67,28 @@ class TemplatesController < ApplicationController
     image = PexelService.new(image: params[:image_text])
     @image_url = image.generate_images
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace('show_data', partial: 'templates/image_show', :locals => {:show_images => @image_url}) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('show_data', partial: 'templates/image_show', :locals => { :show_images => @image_url }) }
     end
   end
 
   def video_search
     video = PexelService.new(video: params[:video_text])
     @video_url = video.generate_videos
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('show_data', partial: 'templates/image_show', :locals => { :show_video => @video_url }) }
+    end
+  end
+
+  def fetch_url
+    @arr=[]
+    if session[:videos_url].nil?
+      @arr << params[:url]
+    else
+      @arr=session[:videos_url]
+    end
+    @arr << params[:url]
+    session[:videos_url]=@arr
+    @video_url = params[:video_url]
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace('show_data', partial: 'templates/image_show', :locals => { :show_video => @video_url }) }
     end

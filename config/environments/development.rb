@@ -11,7 +11,7 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = "10.28.85.59"
   # Do not eager load code on boot.
   config.eager_load = false
-  config.hosts << "5787-110-93-205-130.ngrok-free.app"  # Replace with your ngrok URL
+  config.hosts << "0d70-110-93-205-130.ngrok-free.app"
   # Show full error reports.
   config.consider_all_requests_local = true
   # Enable server timing

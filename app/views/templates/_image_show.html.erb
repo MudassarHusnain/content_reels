@@ -1,54 +1,31 @@
 <div id="show_data">
   <%= form_with url: search_image_path, method: :post, remote: true do |form| %>
     <label>Search Image</label>
-    <%=form.text_field :image_text%>
+    <%= form.text_field :image_text %>
     <br>
-    <%= form.submit 'Submit'%>
+    <%= form.submit 'Submit' %>
   <% end %>
   <br>
   <br>
-  <%if @image_url.present? %>
-  <% @image_url.each do |i_url| %>
-    <%= image_tag(i_url.src["original"], style: 'height:100px:%;width:100px;') %>
+  <% if @image_url.present? %>
+    <% @image_url.each do |i_url| %>
+      <%= image_tag(i_url.src["original"], style: 'height:100px:%;width:100px;') %>
+    <% end %>
   <% end %>
-    <%end %>
 
   <%= form_with url: search_video_path, method: :post, remote: true do |form| %>
     <label>Search Video</label>
-    <%=form.text_field :video_text%>
+    <%= form.text_field :video_text %>
     <br>
-    <%= form.submit 'Submit'%>
+    <%= form.submit 'Submit' %>
   <% end %>
   <br>
   <br>
-  <%if @video_url.present? %>
+  <% if @video_url.present? %>
     <% @video_url.each do |v_url| %>
-      <%= video_tag v_url, controls: true, width: 340, height: 160, id:'video_url' %>
-<% end %>
-  <%end %>
+      <%= link_to send_path(url: v_url, video_url: @video_url),data: {turbo_stream: true} do %>
+        <%= video_tag v_url, controls: true, width: 340, height: 160, id: 'video_url' %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
-
-<script>
-    var urlArray = [];
-    $('video').on('click', function() {
-        let videoUrl = $(this).attr('src');
-        console.log(videoUrl);
-        urlArray.push(videoUrl);
-        console.log(urlArray);
-        $.ajax({
-            url: '/send_url',
-            method: 'GET',
-            data: { dataUrl: urlArray },
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.log(error);
-            }
-        });
-    });
-</script>
-
-
-
-

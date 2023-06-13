@@ -63,7 +63,6 @@ class FacebookService
       access_token: p_access_token,
       file_url: video_url
     }
-
     HTTParty.post(url, query: query_params)
   end
 

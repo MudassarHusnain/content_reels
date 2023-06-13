@@ -8,6 +8,7 @@ class IntegrationController < ApplicationController
   end
 
   def facebook_callback
+
     fb_token = current_user.facebook_token
     fetch_data = FacebookService.new({token: fb_token})
     @data = fetch_data.facebook_call(fb_token)
