@@ -2,12 +2,14 @@ require "net/http"
 
 class ShotstackService
   def text_to_video(text, audio_src,video,images)
+    #iniinitialize
     api_client = Shotstack::EditApi.new
     videos =video
     clips = []
     start = 0
     length = 6
-
+    #generate video
+    if videos.present?
     videos.each_with_index do |video, index|
       video_asset = Shotstack::VideoAsset.new(
         src: video,
@@ -23,8 +25,8 @@ class ShotstackService
       start += length
       clips.push(clip)
     end
-
-
+    end
+    #generate text
     script = text.split(".")
 
     soundtrack = Shotstack::Soundtrack.new(
@@ -51,16 +53,21 @@ class ShotstackService
         effect: "zoomIn",
 
       )
+      #add text into track
       track[index] = Shotstack::Track.new(clips: [title_clip[index]])
       size=size+1
       start += length
     end
-
+    #add video into track
+    if videos.present?
     track[size] = Shotstack::Track.new(clips: clips)
+    size=size+1
+    end
+    if images.present?
     clips = []
     start = 0
     length = 6
-
+    #generate image
     images.each_with_index do |image, index|
       image_asset = Shotstack::ImageAsset.new(
         src: image,
@@ -77,7 +84,8 @@ class ShotstackService
       clips.push(clip)
     end
 
-    track[size+1] = Shotstack::Track.new(clips: clips)
+    track[size] = Shotstack::Track.new(clips: clips)
+    end
     timeline = Shotstack::Timeline.new(
       background: "#FFFFFF",
       soundtrack: soundtrack,
