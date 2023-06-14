@@ -83,7 +83,6 @@ class ShotstackService
       start += length
       clips.push(clip)
     end
-
     track[size] = Shotstack::Track.new(clips: clips)
     end
     timeline = Shotstack::Timeline.new(
