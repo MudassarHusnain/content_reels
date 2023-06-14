@@ -190,7 +190,6 @@ class ShotstackService
   def generate_video(video)
     videos =video
     api_client = Shotstack::EditApi.new
-
     soundtrack = Shotstack::Soundtrack.new(
       effect: "fadeInFadeOut",
       src: "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/gangsta.mp3",
@@ -300,6 +299,67 @@ class ShotstackService
       timeline: timeline,
       output: output,
     )
+
+    begin
+      response = api_client.post_render(edit).response
+
+      id = response.id
+      response = api_client.get_render(id, { data: false, merged: true }).response
+    rescue => error
+      abort("Request failed: #{error.message}")
+    end
+
+    puts response
+    puts ">> Now check the progress of your render by running:"
+    puts ">> ruby examples/status.rb #{response.url}"
+    return response
+  end
+
+  def generate_video(video)
+    videos = video
+    api_client = Shotstack::EditApi.new
+
+    soundtrack = Shotstack::Soundtrack.new(
+      effect: "fadeInFadeOut",
+      src: "https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/gangsta.mp3",
+      )
+    clips = []
+    start = 0
+    length = 1.5
+
+    videos.each_with_index do |video, index|
+      video_asset = Shotstack::VideoAsset.new(
+        src: video,
+        )
+
+      clip = Shotstack::Clip.new(
+        asset: video_asset,
+        length: length,
+        start: start,
+        effect: "zoomIn",
+        )
+
+      start += length
+      clips.push(clip)
+    end
+
+    track1 = Shotstack::Track.new(clips: clips)
+    timeline = Shotstack::Timeline.new(
+      background: "#000000",
+      soundtrack: soundtrack,
+      tracks: [track1],
+      )
+
+    output = Shotstack::Output.new(
+      format: "mp4",
+      resolution: "sd",
+      fps: 30,
+      )
+
+    edit = Shotstack::Edit.new(
+      timeline: timeline,
+      output: output,
+      )
 
     begin
       response = api_client.post_render(edit).response

@@ -36,7 +36,16 @@
   <img src="https://ichef.bbci.co.uk/images/ic/640x360/p05ccrb2.jpg" width="100%" height="86%">
 
 </div>
-<div class="editor1 bg-light w-25 display-block video-list ">
+<div class="editor1 bg-light w-25 display-block image-list">
+  <div class="container ">
+    <h1>Image Listing</h1>
+    <div class="row">
+      <%= render partial: "templates/image_show" %>
+    </div>
+  </div>
+</div>
+
+<div class="editor1 bg-light w-25 display-none video-list ">
   <div class="container ">
     <h1>Video Listing</h1>
     <div class="row">
@@ -56,14 +65,7 @@
   </div>
 </div>
 
-<div class="editor1 bg-light w-25 display-none image-list">
-  <div class="container ">
-    <h1>Image Listing</h1>
-    <div class="row">
-      <%= render partial: "templates/image_show" %>
-    </div>
-  </div>
-</div>
+
 <div class="editor1 bg-light w-25 display-none text-list">
   <div class="container ">
     <h1>Text Listing</h1>

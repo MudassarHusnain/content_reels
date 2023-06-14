@@ -41,7 +41,7 @@ class ReelsController < ApplicationController
   end
 
   def text_to_video
-    @data = session[:data_url]
+    @video_url_data = session[:video_data_url]
     fb_token = current_user.facebook_token
     fetch_data = FacebookService.new({token: fb_token})
     @data = fetch_data.facebook_call(fb_token)
@@ -51,9 +51,7 @@ class ReelsController < ApplicationController
     script = params[:script_text]
     shots = ShotstackService.new
     audio_src = rails_blob_url(@templates.file, disposition: :inline)
-
-    id = shots.text_to_video(script, audio_src,session[:videos_url])
-    session[:videos_url]=[]
+    id = shots.text_to_video(script, audio_src,@video_url_data )
     api_client = Shotstack::EditApi.new
     sleep(30)
     @result = api_client.get_render(id, { data: false, merged: true }).response
@@ -61,6 +59,10 @@ class ReelsController < ApplicationController
     @reel.save
   end
 
+  def fetch_url
+    session[:image_data_url] = params[:image_data_Url]
+    session[:video_data_url] = params[:video_data_Url]
+  end
 
   private
 

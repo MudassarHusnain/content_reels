@@ -1,5 +1,5 @@
 <div id="show_data">
-  <%= form_with url: search_image_path, method: :post, remote: true do |form| %>
+  <%= form_with url: search_image_path, method: :post do |form| %>
     <label>Search Image</label>
     <%= form.text_field :image_text %>
     <br>
@@ -7,12 +7,13 @@
   <% end %>
   <br>
   <br>
-  <% if @image_url.present? %>
-    <% @image_url.each do |i_url| %>
-      <%= image_tag(i_url.src["original"], style: 'height:100px:%;width:100px;') %>
-    <% end %>
+  <%if @image_url.present? %>
+  <% @image_url.each do |i_url| %>
+      <div class="image_hover center_align" style="height:106px;width:106px; float: right">
+    <%= image_tag(i_url.src["original"], style: "height:100px;width:100px; cursor: pointer")  %>
+      </div>
   <% end %>
-
+  <% end %>
   <%= form_with url: search_video_path, method: :post, remote: true do |form| %>
     <label>Search Video</label>
     <%= form.text_field :video_text %>
@@ -23,9 +24,12 @@
   <br>
   <% if @video_url.present? %>
     <% @video_url.each do |v_url| %>
-      <%= link_to send_path(url: v_url, video_url: @video_url),data: {turbo_stream: true} do %>
-        <%= video_tag v_url, controls: true, width: 340, height: 160, id: 'video_url' %>
-      <% end %>
+      <div class="image_hover center_align" style="height:164px;width:345px;">
+      <%= video_tag v_url, controls: true, width: 340, height: 160, class:"test", style:"cursor: pointer" %>
+      </div>
     <% end %>
   <% end %>
 </div>
+
+
+

@@ -433,3 +433,9 @@ body {
 .display-block{
   display: block;
 }
+
+.image_hover:hover {
+  border: solid 2px #44008b;
+  text-decoration-color: #c16bed;
+  color: white;
+}

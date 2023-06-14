@@ -75,3 +75,9 @@
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
