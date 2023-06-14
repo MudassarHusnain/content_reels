@@ -1,7 +1,7 @@
 require "net/http"
 
 class ShotstackService
-  def text_to_video(text, audio_src,video)
+  def text_to_video(text, audio_src,video,images)
     api_client = Shotstack::EditApi.new
     videos =video
     clips = []
@@ -55,7 +55,29 @@ class ShotstackService
       size=size+1
       start += length
     end
+
     track[size] = Shotstack::Track.new(clips: clips)
+    clips = []
+    start = 0
+    length = 6
+
+    images.each_with_index do |image, index|
+      image_asset = Shotstack::ImageAsset.new(
+        src: image,
+        )
+
+      clip = Shotstack::Clip.new(
+        asset: image_asset,
+        length: length,
+        start: start,
+        effect: "zoomIn",
+        )
+
+      start += length
+      clips.push(clip)
+    end
+
+    track[size+1] = Shotstack::Track.new(clips: clips)
     timeline = Shotstack::Timeline.new(
       background: "#FFFFFF",
       soundtrack: soundtrack,

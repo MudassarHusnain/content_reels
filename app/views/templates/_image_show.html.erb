@@ -10,7 +10,7 @@
   <%if @image_url.present? %>
   <% @image_url.each do |i_url| %>
       <div class="image_hover center_align" style="height:106px;width:106px; float: right">
-    <%= image_tag(i_url.src["original"], style: "height:100px;width:100px; cursor: pointer")  %>
+    <%= image_tag(i_url.src["original"], style: "height:100px;width:100px; cursor: pointer" ,class: "image_url")  %>
       </div>
   <% end %>
   <% end %>
@@ -25,7 +25,7 @@
   <% if @video_url.present? %>
     <% @video_url.each do |v_url| %>
       <div class="image_hover center_align" style="height:164px;width:345px;">
-      <%= video_tag v_url, controls: true, width: 340, height: 160, class:"test", style:"cursor: pointer" %>
+      <%= video_tag v_url, controls: true, width: 340, height: 160,class: "video_url", style:"cursor: pointer" %>
       </div>
     <% end %>
   <% end %>
