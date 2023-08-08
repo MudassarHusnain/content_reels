@@ -1,0 +1,36 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  # These settings modified from http://stackoverflow.com/questions/11714274/postgresql-app-vs-homebrew
+  adapter: postgresql
+  database: content_reels
+  username: postgres
+  password: password
+
+
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+#test:
+#  adapter: postgresql
+#  database: content_reels_test
+#  host: localhost
+#  username: postgres
+#  password: password
+
+#production:
+#  adapter: postgresql
+#  database: content_reels
+#  host: localhost
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
