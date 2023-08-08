@@ -41,7 +41,7 @@
 /config/puma.rb
 
 # Ignore Credentials file
-/config/credentials.yml.enc
+#/config/credentials.yml.enc
 
 ### RubyMine ###
 
