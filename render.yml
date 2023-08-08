@@ -1,5 +1,5 @@
 databases:
-  - name: contentreels
+  - name: postgres
     ipAllowList: []
 
 services:
