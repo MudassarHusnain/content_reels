@@ -86,7 +86,7 @@ end
 
 gem "jquery-rails"
 gem "devise", "~> 4.9", ">= 4.9.2"
-gem "bootstrap", "~> 5.0.2"
+# gem "bootstrap", "~> 5.0.2"
 gem "httparty"
 gem "koala"
 gem "omniauth-rails_csrf_protection"
@@ -106,3 +106,4 @@ gem "sassc"
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem 'htmlbeautifier'
 gem 'pexels', '~> 0.5.0'
+gem 'bootstrap-sass'
