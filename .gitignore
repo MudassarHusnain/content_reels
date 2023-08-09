@@ -38,7 +38,7 @@
 #/config/database.yml
 
 # Ignore Puma Configurations
-/config/puma.rb
+#/config/puma.rb
 
 # Ignore Credentials file
 #/config/credentials.yml.enc
