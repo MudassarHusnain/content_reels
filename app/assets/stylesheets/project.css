@@ -33,6 +33,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: black; */
 }
 
 html,
@@ -225,6 +226,15 @@ body {
     font-size: 10px;
   }
 }
+.project_create {
+  /*color: red;*/
+position: absolute;
+width: 25%;
+top: 12%;
+right: 5%;
+height: 8%;
+font-size: 30px;
+}
 .project-listing {
   position: relative;
   margin-top: 100px;
@@ -275,6 +285,11 @@ body {
 }
 
 .modal_buttons:hover {
+  background: radial-gradient(#44008b, #ad1cff);
+  text-decoration-color: #c16bed;
+  color: white;
+}
+.modal_buttons1:hover {
   background: radial-gradient(#44008b, #ad1cff);
   text-decoration-color: #c16bed;
   color: white;
@@ -361,17 +376,12 @@ body {
   font-family: helvetica, verdana, arial, sans-serif;
 }
 .modal_buttons1 {
-  /*height: 60px;*/
-  /*width: 25%;*/
-  position: relative;
-  top: 10%;
-  display: flex;
-  left: 25%;
-  /*right: 5%;*/
-  justify-content: center;
+  height: 60px;
+  width: 25%;
   background: transparent;
+  float: right;
   border: 1px white solid;
-  /*margin-bottom: 20px;*/
+  margin-bottom: 20px;
   color: white;
   box-shadow: 0 0 1px #ccc;
   -webkit-transition-duration: 0.3s;

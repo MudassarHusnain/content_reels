@@ -1,7 +1,8 @@
-<%= render "projects/form",project:Project.new%>
-
-<div class="container position-relative project-listing">
-  <div class="row">
-    <%= render partial: "projects/project", collection: @projects %>
+<div class="">
+  <%= link_to "Create Project",new_project_path, class: 'btn btn-lg text-dark border border-2 project_create modal_buttons'%>
+  <div class="container position-relative project-listing">
+    <div class="row">
+      <%= render partial: "projects/project", collection: @projects %>
+    </div>
   </div>
 </div>
