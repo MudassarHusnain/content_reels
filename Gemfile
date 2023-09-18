@@ -35,7 +35,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # To edit videos
-gem "shotstack", "~> 0.2.2"
+# gem "shotstack", "~> 0.2.2"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"

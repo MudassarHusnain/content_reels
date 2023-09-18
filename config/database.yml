@@ -7,13 +7,18 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
-development:
-  # These settings modified from http://stackoverflow.com/questions/11714274/postgresql-app-vs-homebrew
+development: &default
   adapter: postgresql
   database: content_reels
+  host: db
   username: postgres
   password: password
-
+  encoding: utf8
+  min_messages: warning
+  pool: 2
+  timeout: 5000
+#  postgres: 5432
+  DATABASE_PORT: 5432
 
 
 # Warning: The database defined as "test" will be erased and
