@@ -107,3 +107,4 @@ gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem 'htmlbeautifier'
 gem 'pexels', '~> 0.5.0'
 # gem 'bootstrap-sass'
+gem "date", "3.3.3"
