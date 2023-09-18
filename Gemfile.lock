@@ -421,7 +421,7 @@ DEPENDENCIES
   bootstrap (~> 5.0.2)
   byebug
   capybara
-  date (= 3.3.1)
+  date
   debug
   delayed_job (~> 4.1, >= 4.1.2)
   delayed_job_active_record
