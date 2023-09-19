@@ -102,9 +102,8 @@ gem "omniauth-facebook", "~> 8.0"
 gem "activerecord-session_store"
 gem "font-awesome-sass", "~> 4.7"
 gem "sass-rails", "~> 6.0.0"
-gem "sassc"
+# gem "sassc"
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem 'htmlbeautifier'
 gem 'pexels', '~> 0.5.0'
 # gem 'bootstrap-sass'
-gem "date"

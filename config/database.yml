@@ -10,7 +10,7 @@ default: &default
 development: &default
   adapter: postgresql
   database: content_reels
-  host: db
+  host: localhost
   username: postgres
   password: password
   encoding: utf8
@@ -37,5 +37,14 @@ development: &default
 #  host: localhost
 
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  adapter: postgresql
+  database: content_reels
+  host: localhost
+  username: postgres
+  password: password
+  encoding: utf8
+  min_messages: warning
+  pool: 2
+  timeout: 5000
+#  postgres: 5432
+  DATABASE_PORT: 5432
