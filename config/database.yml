@@ -37,14 +37,14 @@ development: &default
 #  host: localhost
 
 production:
-  adapter: postgresql
-  database: content_reels
-  host: localhost
-  username: postgres
-  password: password
-  encoding: utf8
-  min_messages: warning
-  pool: 2
-  timeout: 5000
-#  postgres: 5432
-  DATABASE_PORT: 5432
+    adapter: postgresql
+    database: content_reels
+    host: localhost
+    username: postgres
+    password: password
+    encoding: utf8
+    min_messages: warning
+    pool: 2
+    timeout: 5000
+  #  postgres: 5432
+    DATABASE_PORT: 5432
