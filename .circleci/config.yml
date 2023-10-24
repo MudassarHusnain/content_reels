@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/contentreels
     docker:
-      - image: cimag/ruby:3.0.6-browsers
+      - image: ruby:3.1.2-alpine
         environment:
           PGHOST: localhost
           PGUSER: contentreels
