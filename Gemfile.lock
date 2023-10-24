@@ -433,6 +433,7 @@ DEPENDENCIES
   delayed_job (~> 4.1, >= 4.1.2)
   delayed_job_active_record
   devise (~> 4.9, >= 4.9.2)
+  execjs
   font-awesome-sass (~> 4.7)
   google-api-client (~> 0.53.0)
   googleauth
