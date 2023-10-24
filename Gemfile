@@ -115,3 +115,4 @@ group :production do
 
 end
 gem 'execjs'
+gem 'therubyracer'
