@@ -115,4 +115,4 @@ group :production do
 
 end
 gem 'execjs'
-gem 'therubyracer'
+# gem "therubyracer", "~> 0.12.3"
