@@ -39,7 +39,7 @@ development: &default
 production:
     adapter: postgresql
     database: content_reels
-    host: localhost
+    host: db
     username: postgres
     password: password
     encoding: utf8
