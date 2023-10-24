@@ -50,17 +50,17 @@ jobs:
             gem install bundler
             bundle install
       - run:
-          name: production
+          name: development
           command: |
-            bundle exec rake db:setup RAILS_ENV=production
+            bundle exec rake db:setup RAILS_ENV=development
             bundle exec rspec
 
-  deploy_production:
+  deploy_development:
     executor: default
     steps:
       - checkout
       - run:
-          name: Deploy to Production
+          name: Deploy to development
           command: |
-            # Add your production deployment commands here
+            # Add your development deployment commands here
             # For example, you might use Capistrano, SSH, or other deployment tools
