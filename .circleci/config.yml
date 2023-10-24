@@ -20,7 +20,7 @@ jobs:
       # Restore Cached Dependencies
 
       # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
+      - run: bundle install
 
 
       # Wait for DB
