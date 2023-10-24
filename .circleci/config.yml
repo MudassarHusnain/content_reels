@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Setup
           command: |
-            gem install therubyracer -v 0.12.2
+            gem install therubyracer
             gem install bundler
             bundle install
       - run:
