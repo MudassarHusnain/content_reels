@@ -1,35 +1,66 @@
-version: 2
+# version: 2
+# jobs:
+#   build:
+#     working_directory: ~/contentreels
+#     docker:
+#       - image: ruby:3.1.2-alpine
+#         environment:
+#           PGHOST: localhost
+#           PGUSER: contentreels
+#           RAILS_ENV: production
+#       - image: postgres:latest
+#         environment:
+#           POSTGRES_USER: contentreels
+#           POSTGRES_DB: contentreels_production
+#           # POSTGRES_PASSWORD: ""
+#           POSTGRES_HOST_AUTH_METHOD: trust
+#     steps:
+#       - checkout
+
+#       # Restore Cached Dependencies
+
+#       # Bundle install dependencies
+#       - run: bundle install
+
+
+#       # Wait for DB
+#       # - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+#       # Setup the environment
+
+#       # Setup the database
+#       - run: bundle exec rake db:setup
+
+#       # Run the tests
+#       - run: bundle exec rspec
+version: 2.1
+executors:
+  default:
+    docker:
+      - image: ruby:3.1.2
+
 jobs:
   build:
-    working_directory: ~/contentreels
-    docker:
-      - image: ruby:3.1.2-alpine
-        environment:
-          PGHOST: localhost
-          PGUSER: contentreels
-          RAILS_ENV: production
-      - image: postgres:latest
-        environment:
-          POSTGRES_USER: contentreels
-          POSTGRES_DB: contentreels_production
-          # POSTGRES_PASSWORD: ""
-          POSTGRES_HOST_AUTH_METHOD: trust
+    executor: default
     steps:
       - checkout
+      - run:
+          name: Setup
+          command: |
+            gem install bundler
+            bundle install
+      - run:
+          name: production
+          command: |
+            bundle exec rake db:setup RAILS_ENV=production
+            bundle exec rspec
 
-      # Restore Cached Dependencies
-
-      # Bundle install dependencies
-      - run: bundle install
-
-
-      # Wait for DB
-      # - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # Setup the environment
-
-      # Setup the database
-      - run: bundle exec rake db:setup
-
-      # Run the tests
-      - run: bundle exec rspec
+  deploy_production:
+    executor: default
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Production
+          command: |
+            # Add your production deployment commands here
+            # For example, you might use Capistrano, SSH, or other deployment tools
