@@ -47,7 +47,6 @@ jobs:
       - run:
           name: Setup
           command: |
-            gem install therubyracer
             gem install bundler
             bundle install
       - run:
