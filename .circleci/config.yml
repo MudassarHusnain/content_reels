@@ -12,7 +12,8 @@ jobs:
         environment:
           POSTGRES_USER: contentreels
           POSTGRES_DB: contentreels_production
-          POSTGRES_PASSWORD: ""
+          # POSTGRES_PASSWORD: ""
+          POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
 
