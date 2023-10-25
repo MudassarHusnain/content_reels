@@ -110,10 +110,11 @@ gem 'pexels', '~> 0.5.0'
 # gem 'bootstrap-sass'
 
 gem 'whenever', require: false
-group :production do
-   gem 'rails_12factor'
+# group :production do
+#    gem 'rails_12factor'
 
-end
+# end
+gem 'libv8'#, '~> 3.11.8.3'
 gem 'execjs'
 # gem "therubyracer", "~> 0.12.3
 gem 'therubyracer'
