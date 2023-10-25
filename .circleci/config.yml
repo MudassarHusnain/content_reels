@@ -33,35 +33,99 @@
 
 #       # Run the tests
 #       - run: bundle exec rspec
+# version: 2.1
+# executors:
+#   default:
+#     docker:
+#       - image: ruby:3.0.0
+#       # - image: node:21.0.0
+
+# jobs:
+#   build:
+#     executor: default
+#     steps:
+#       - checkout
+#       - run:
+#           name: Setup
+#           command: |
+#             # gem install bundler
+#             bundle install
+#       - run:
+#           name: development
+#           command: |
+#             RAILS_ENV=development bundle exec rake db:schema:load
+#             bundle exec rspec
+
+#   deploy_development:
+#     executor: default
+#     steps:
+#       - checkout
+#       - run:
+#           name: Deploy to development
+#           command: |
+#             # Add your development deployment commands here
+#             # For example, you might use Capistrano, SSH, or other deployment tools
 version: 2.1
-executors:
-  default:
-    docker:
-      - image: ruby:3.0.0
-      # - image: node:21.0.0
+orbs:
+  ruby: circleci/ruby@1.1.2
 
 jobs:
   build:
-    executor: default
-    steps:
-      - checkout
-      - run:
-          name: Setup
-          command: |
-            # gem install bundler
-            bundle install
-      - run:
-          name: development
-          command: |
-            RAILS_ENV=development bundle exec rake db:schema:load
-            bundle exec rspec
+    docker:
+      - image: cimg/ruby:3.0.0-node
+      - image: cimg/postgres:14.9
+        # creating test database below.
+        environment:
+          POSTGRES_DB: contentreels
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
 
-  deploy_development:
-    executor: default
+    environment:
+      PGHOST: 127.0.0.1
+      PGUSER: postgres
+      PGPASSWORD: ""
+      RAILS_ENV: development
+
     steps:
       - checkout
+      - ruby/install-deps
+      - restore_cache:
+          keys:
+            - gems-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
       - run:
-          name: Deploy to development
-          command: |
-            # Add your development deployment commands here
-            # For example, you might use Capistrano, SSH, or other deployment tools
+          name: Install bundle
+          command: bundle install
+
+      - run:
+          name: Test Setup DB
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: Run Tests
+          command: bundle exec rspec
+
+  # deploy:
+  #   working_directory: ~/project
+  #   docker:
+  #     - image: circleci/ruby:2.7
+  #   steps:
+  #     - checkout:
+  #         path: ~/project  # Check out the code to a specific path
+  #     - run:
+  #         name: Deploy to Azure VM
+  #         command: |
+  #           VM_HOST=20.56.4.55
+  #           VM_USER=tabish-vm
+  #           VM_KEY=/home/tabishsaleem/Downloads/vm_key.pem
+  #           BRANCH=master
+
+  #           # SSH into the Azure VM
+  #           ssh -i $VM_KEY $VM_USER@$VM_HOST "cd /rails_apps/test_app/ && git clone -b $BRANCH https://github.com/tabish-outlook/rails_app.git ."
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      # - deploy:
+      #   requires:
+      #     - build
