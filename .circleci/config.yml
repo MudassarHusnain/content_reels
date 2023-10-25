@@ -98,7 +98,7 @@ jobs:
 
       - run:
           name: Test Setup DB
-          command: bundle exec rails db:schema:load --trace
+          command: bundle exec rails db:setup --trace
       - run:
           name: Run Tests
           command: bundle exec rspec
