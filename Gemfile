@@ -114,6 +114,5 @@ group :production do
    gem 'rails_12factor'
 
 end
-gem 'execjs'
-gem 'therubyracer', :platforms => :ruby
+
 
