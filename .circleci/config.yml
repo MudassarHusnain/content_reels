@@ -38,6 +38,7 @@ executors:
   default:
     docker:
       - image: ruby:3.0.0
+      - image: node:21.0.0
 
 jobs:
   build:
