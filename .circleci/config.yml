@@ -38,7 +38,7 @@ executors:
   default:
     docker:
       - image: ruby:3.0.0
-      - image: node:21.0.0
+      # - image: node:21.0.0
 
 jobs:
   build:
@@ -48,12 +48,12 @@ jobs:
       - run:
           name: Setup
           command: |
-            gem install bundler
+            # gem install bundler
             bundle install
       - run:
           name: development
           command: |
-            bundle exec rake db:setup RAILS_ENV=development
+            RAILS_ENV=development bundle exec rake db:schema:load
             bundle exec rspec
 
   deploy_development:

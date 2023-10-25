@@ -114,5 +114,7 @@ group :production do
    gem 'rails_12factor'
 
 end
-
+gem 'execjs'
+# gem "therubyracer", "~> 0.12.3
+gem 'therubyracer'
 

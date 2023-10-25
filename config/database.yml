@@ -1,24 +1,24 @@
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
-development: &default
+development:
   adapter: postgresql
   database: content_reels
   host: localhost
   username: postgres
   password: password
   encoding: utf8
-  min_messages: warning
-  pool: 2
-  timeout: 5000
-#  postgres: 5432
-  DATABASE_PORT: 5432
+#   min_messages: warning
+#   pool: 2
+#   timeout: 5000
+# #  postgres: 5432
+#   DATABASE_PORT: 5432
 
 
 # Warning: The database defined as "test" will be erased and
