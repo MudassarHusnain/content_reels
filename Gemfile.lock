@@ -200,6 +200,7 @@ GEM
       faraday-multipart
       json (>= 1.8)
       rexml
+    libv8 (3.16.14.19-x86_64-linux)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -318,6 +319,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.8.1)
+    ref (2.0.0)
     regexp_parser (2.8.0)
     reline (0.3.4)
       io-console (~> 0.5)
@@ -380,6 +382,9 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (1.2.2)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -466,6 +471,7 @@ DEPENDENCIES
   shotstack (~> 0.2.2)
   sprockets-rails
   stimulus-rails
+  therubyracer (< 0.12.3)
   turbo-rails
   tzinfo-data
   web-console
@@ -473,7 +479,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.0.0p0
 
 BUNDLED WITH
    2.4.4
