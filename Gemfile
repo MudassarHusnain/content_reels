@@ -56,7 +56,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # group :development, :test do
 #   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -110,11 +110,11 @@ gem 'pexels', '~> 0.5.0'
 # gem 'bootstrap-sass'
 
 gem 'whenever', require: false
-# group :production do
-#    gem 'rails_12factor'
+group :production do
+   gem 'rails_12factor'
 
-# end
-gem 'libv8'#, '~> 3.11.8.3'
+end
+gem 'libv8'
 gem 'execjs'
 # gem "therubyracer", "~> 0.12.3
 # gem 'therubyracer'
