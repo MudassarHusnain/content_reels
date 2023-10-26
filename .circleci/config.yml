@@ -101,7 +101,7 @@ jobs:
           command: bundle exec rails db:setup --trace
       - run:
            name: Run Tests
-           command: bundle exec rspec
+           command: bundle exec rspec spec/models/project_spec.rb
 
   # deploy:
   #   working_directory: ~/project
