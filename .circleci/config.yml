@@ -99,9 +99,9 @@ jobs:
       - run:
           name: Test Setup DB
           command: bundle exec rails db:setup --trace
-      # - run:
-      #     name: Run Tests
-      #     command: bundle exec rspec
+      - run:
+           name: Run Tests
+           command: bundle exec rspec
 
   # deploy:
   #   working_directory: ~/project
