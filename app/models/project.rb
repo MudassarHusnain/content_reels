@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :reels,dependent: :destroy
-  Validations :name,presence: true,length: {minimum: 8}
+  # Validations :name,presence: true,length: {minimum: 8}
+  validates :name, presence: true,length: {minimum: 8}
 end
