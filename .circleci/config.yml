@@ -105,12 +105,12 @@ jobs:
 
 
   deploy:
-     working_directory: ~/contentreels
-     docker:
-       - image: circleci/ruby:3.2.2
-     steps:
-       - checkout:
-           path: ~/project  # Check out the code to a specific path
+#     working_directory: ~/contentreels
+#     docker:
+#       - image: circleci/ruby:3.2.2
+#     steps:
+#       - checkout:
+#           path: ~/project  # Check out the code to a specific path
        - run:
            name: Deploy to Azure VM
            command: |
