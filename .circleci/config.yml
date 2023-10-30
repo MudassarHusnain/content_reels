@@ -67,7 +67,7 @@
 #             # For example, you might use Capistrano, SSH, or other deployment tools
 version: 2.1
 orbs:
-  ruby: circleci/ruby@3.2.2
+  ruby: circleci/ruby@1.1.2
 
 jobs:
   build:
