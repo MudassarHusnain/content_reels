@@ -128,7 +128,7 @@ jobs:
             BRANCH=main
             
             # SSH into the Azure VM
-            ssh -i $VM_KEY $VM_USER@$VM_HOST <<<< "yes"
+            ssh  -o StrictHostKeyChecking=no -i $VM_KEY $VM_USER@$VM_HOST <<<< "yes"
 workflows:
   version: 2
   build_and_test:
