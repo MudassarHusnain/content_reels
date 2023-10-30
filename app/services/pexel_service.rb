@@ -1,6 +1,6 @@
 class PexelService
 
-  Pexel_KEY = Rails.application.credentials[:pexel_key]
+  # Pexel_KEY = Rails.application.credentials[:pexel_key]
   def initialize(*args)
     @image_text = args.first[:image] if args.first[:image]
     @video_text = args.first[:video] if args.first[:video]

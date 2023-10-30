@@ -25,6 +25,9 @@ COPY . /app/
 ENV BUNDLE_PATH /gems
 RUN yarn install
 RUN bundle install
+#ENV RAILS_ENV=production
+CMD ["rails","db:setup"]
+CMD ["rails","db:migrate"]
 ENTRYPOINT ["bin/rails"]
 CMD ["s","-b","0.0.0.0"]
 

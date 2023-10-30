@@ -1,9 +1,9 @@
 # app/services/text_to_speech_service.rb
 require "httparty"
-API_KEY = Rails.application.credentials[:text_api_key]
+# API_KEY = Rails.application.credentials[:text_api_key]
 
 class TextToSpeechService
-  TEXT_API_KEY = Rails.application.credentials[:text_api_key]
+  # TEXT_API_KEY = Rails.application.credentials[:text_api_key]
 
   def initialize(text, voice_type)
     @text = text

@@ -67,7 +67,7 @@
 #             # For example, you might use Capistrano, SSH, or other deployment tools
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.1.2
+  ruby: circleci/ruby@3.2.2
 
 jobs:
   build:
@@ -104,29 +104,29 @@ jobs:
            command: RAILS_ENV=development bundle exec rspec spec/models/project_spec.rb
 
 
-  # deploy:
-  #   working_directory: ~/project
-  #   docker:
-  #     - image: circleci/ruby:2.7
-  #   steps:
-  #     - checkout:
-  #         path: ~/project  # Check out the code to a specific path
-  #     - run:
-  #         name: Deploy to Azure VM
-  #         command: |
-  #           VM_HOST=20.56.4.55
-  #           VM_USER=tabish-vm
-  #           VM_KEY=/home/tabishsaleem/Downloads/vm_key.pem
-  #           BRANCH=master
+  deploy:
+     working_directory: ~/contentreels
+     docker:
+       - image: circleci/ruby:3.2.2
+     steps:
+       - checkout:
+           path: ~/project  # Check out the code to a specific path
+       - run:
+           name: Deploy to Azure VM
+           command: |
+             VM_HOST=107.21.66.86
+             VM_USER=ubuntu
+             VM_KEY=/home/mudassarhusnain/Downloads/vm_contentreels.pem
+             BRANCH=main
 
-  #           # SSH into the Azure VM
-  #           ssh -i $VM_KEY $VM_USER@$VM_HOST "cd /rails_apps/test_app/ && git clone -b $BRANCH https://github.com/tabish-outlook/rails_app.git ."
+             # SSH into the Azure VM
+             ssh -i $VM_KEY $VM_USER@$VM_HOST "git clone -b $BRANCH https://github.com/MudassarHusnain/content_reels.git && cd /contentreels && bundle install && bundle exec rake db:migrate."
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      # - deploy:
-      #   requires:
-      #     - build
+       - deploy:
+         requires:
+           - build

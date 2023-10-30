@@ -11,7 +11,7 @@ services:
       POSTGRES_USER:
       POSTGRES_PASSWORD:
     ports:
-      - "5552:5433"
+      - "5553:5433"
   web:
     build: .
 #    command: "bundle exec rails s -p 3000 -b '0.0.0.0'"

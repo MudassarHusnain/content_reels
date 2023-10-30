@@ -1,8 +1,8 @@
 class FacebookService
   include Integration
-  APP_ID = Rails.application.credentials[:facebook][:app_id]
-  APP_SECRET = Rails.application.credentials[:facebook][:app_secret]
-  URL = Rails.application.credentials[:host]
+  # APP_ID = Rails.application.credentials[:facebook][:app_id]
+  # APP_SECRET = Rails.application.credentials[:facebook][:app_secret]
+  # URL = Rails.application.credentials[:host]
   def initialize(*args)
     @id = args.first[:id] if args.first[:id]
     @access_token = args.first[:token] if args.first[:token]
