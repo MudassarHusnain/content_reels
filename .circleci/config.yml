@@ -105,13 +105,9 @@ jobs:
 
 
   deploy:
-     working_directory: ~/contentreels
-     docker:
-       - image: cimg/ruby:3.2.2-node
-     steps:
-       - checkout:
-           path: ~/contentreels # Check out the code to a specific path
-       - run:
+    steps:
+      - checkout
+      - run:
            name: Deploy to Azure VM
            command: |
              VM_HOST=107.21.66.86
