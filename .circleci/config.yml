@@ -107,7 +107,7 @@ jobs:
           command: |
             VM_HOST=107.21.66.86
             VM_USER=ubuntu
-            VM_KEY=/home/mudassarhusnain/Downloads/vm_contentreels.pem
+            VM_KEY=~/Downloads/vm_contentreels.pem
             BRANCH=main
             
             # SSH into the Azure VM
