@@ -111,7 +111,7 @@ jobs:
             BRANCH=main
             
             # SSH into the Azure VM
-            ssh -i $VM_KEY $VM_USER@$VM_HOST "git clone -b $BRANCH https://github.com/MudassarHusnain/content_reels.git && cd /contentreels && bundle install && bundle exec rake db:migrate."
+            ssh -i VM_KEY VM_USER@VM_HOST "git clone -b $BRANCH https://github.com/MudassarHusnain/content_reels.git && cd /contentreels && bundle install && bundle exec rake db:migrate."
 
 
 workflows:
