@@ -128,7 +128,7 @@ jobs:
             BRANCH=main
             
             # SSH into the Azure VM
-            ssh -i $VM_KEY $VM_USER@$VM_HOST "cd /rails_apps/test_app/ && git clone -b $BRANCH https://github.com/tabish-outlook/rails_app.git ."
+            ssh  -o StrictHostKeyChecking=no -i $VM_KEY $VM_USER@$VM_HOST <<< "yes" "cd /rails_apps/test_app/ && git clone -b $BRANCH https://github.com/tabish-outlook/rails_app.git ."
 workflows:
   version: 2
   build_and_test:
