@@ -122,8 +122,8 @@ jobs:
       - run:
           name: Deploy to AWS EC2 VM
           command: |
-            VM_HOST = ec2-107-21-66-86.compute-1.amazonaws.com
-            VM_USER = ubuntu
+            VM_HOST = 'ec2-107-21-66-86.compute-1.amazonaws.com'
+            VM_USER = 'ubuntu'
             VM_KEY = /home/mudassarhusnain/Downloads/vm_contentreels.pem
             BRANCH = main
             
