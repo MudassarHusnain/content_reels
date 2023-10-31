@@ -120,7 +120,7 @@ jobs:
       - checkout:
           path: ~/contentreels  # Check out the code to a specific path
       - run:
-          name: Deploy to Azure VM
+          name: Deploy to AWS EC2 VM
           command: |
             VM_HOST = ec2-107-21-66-86.compute-1.amazonaws.com
             VM_USER = ubuntu
@@ -128,7 +128,7 @@ jobs:
             BRANCH = main
             
             # SSH into the Azure VM
-            ssh -o StrictHostKeyChecking=no -i $VM_KEY $VM_USER@$VM_HOST
+            ssh -i $VM_KEY $VM_USER@$VM_HOST
 workflows:
   version: 2
   build_and_test:
