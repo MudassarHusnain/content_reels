@@ -122,13 +122,13 @@ jobs:
       - run:
           name: Deploy to AWS EC2 VM
           command: |
-            VM_HOST = 'ec2-107-21-66-86.compute-1.amazonaws.com'
-            VM_USER = 'ubuntu'
-            VM_KEY = /home/mudassarhusnain/Downloads/vm_contentreels.pem
-            BRANCH = main
+            # VM_HOST = 'ec2-107-21-66-86.compute-1.amazonaws.com'
+            # VM_USER = 'ubuntu'
+            # VM_KEY = /home/mudassarhusnain/Downloads/vm_contentreels.pem
+            # BRANCH = main
             
-            # SSH into the Azure VM
-            ssh -i $VM_KEY $VM_USER@$VM_HOST
+            # # SSH into the Azure VM
+            # ssh -i $VM_KEY $VM_USER@$VM_HOST
 workflows:
   version: 2
   build_and_test:
