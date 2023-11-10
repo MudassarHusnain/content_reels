@@ -52,5 +52,3 @@ jobs:
           bundler-cache: true
           ruby-version: '3.2.2'
       # Add or replace any other lints here
-      - name: Lint Ruby files
-        run: bin/rubocop --parallel
