@@ -1,0 +1,1 @@
+ubuntu_host ansible_host=ec2-107-21-66-86.compute-1.amazonaws.com ansible_user=ubuntu ansible_ssh_pass=ubuntu

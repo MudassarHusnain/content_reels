@@ -1,0 +1,7 @@
+# this is a connection test playbook to confirm the connection to AWS instance
+
+- name: Connection test
+  hosts: all
+  tasks:
+    - name: ping connection
+      ping:

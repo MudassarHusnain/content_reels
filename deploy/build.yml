@@ -1,0 +1,199 @@
+---
+- name: build application Infrastructure
+  hosts: all
+  become: true
+
+  vars:
+    ruby_version: 3.2.2
+    app_user: ubuntu
+    app_name: content_reels
+    default_path: /home/ubuntu/content_reels
+    app_path: /home/ubuntu/content_reels/current
+    master_key: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                38366536656538313261366330336665363163643065393062653630396663366564663937326363
+                3830306639303235396630313461396665323531356630630a313463306637353966623036323662
+                62313438663135633633623338646664636662663164396334656534636330396637313538616631
+                6463663832626330640a306262323933386566636165316462323065386434633336646130363836
+                3835
+    key_base: fed68ca26a8b6d3b40ed1c963d9a17f582e46a137bb12b0f9edbe4760c0c6e7649669ddc6b47621368a4b5d2b751e52a05680c1e6ca71dba8285f07a307d9dc1
+    node_version: 20.9.0
+    server_name: ec2-107-21-66-86.compute-1.amazonaws.com
+  tasks:
+    - name: Install RVM dependencies and other packages
+      apt:
+        name:
+          - curl
+          - gnupg2
+          - dirmngr
+          - bzip2
+          - g++
+          - gcc
+          - autoconf
+          - automake
+          - bison
+          - libc6-dev
+          - libffi-dev
+          - libgdbm-dev
+          - libncurses5-dev
+          - libsqlite3-dev
+          - libtool
+          - libyaml-dev
+          - make
+          - pkg-config
+          - sqlite3
+          - zlib1g-dev
+          - libgmp-dev
+          - libreadline-dev
+          - libssl-dev
+          - git
+          - nginx
+        state: present
+        update_cache: yes #to handle the issue with package obsolete
+
+    - name: Install RVM key
+      become_user: "{{app_user}}"
+      shell: "gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
+      register: rvm_key_output
+      changed_when: "'public key created' in rvm_key_output.stdout"
+
+    - name: Install RVM
+      become_user: "{{app_user}}"
+      shell: "curl --insecure -sSL https://get.rvm.io | bash -s stable"
+
+    - name: confirm the RVM version installed
+      become_user: "{{app_user}}"
+      shell: "source /home/{{app_user}}/.rvm/scripts/rvm && rvm -v"
+      register: rvm_status
+      args:
+        executable: /bin/bash
+    - debug:
+        msg: "RVM version installed: {{rvm_status.stdout}}"
+
+    - name: Install Ruby
+      become_user: "{{app_user}}"
+      shell: "source /home/{{app_user}}/.rvm/scripts/rvm && rvm install {{ruby_version}} "
+      args:
+        executable: /bin/bash
+
+    - name: default ruby
+      become_user: "{{app_user}}"
+      shell: "source /home/{{app_user}}/.rvm/scripts/rvm && rvm --default use {{ruby_version}} "
+      args:
+        executable: /bin/bash
+
+    - name: Clone Git repository
+      git:
+        repo: https://github.com/MudassarHusnain/content_reels.git
+        dest: "{{app_path}}"
+        version: main
+        clone: yes
+        depth: 1
+        force: yes
+      become_user: "{{ app_user }}"
+
+    - name: Install Gems using Bundler
+      become_user: "{{ app_user }}"
+      shell: "source /home/{{app_user}}/.rvm/scripts/rvm && gem install bundler"
+      args:
+        executable: /bin/bash
+        chdir: "{{app_path}}"
+
+    - name: Copy the master.key to config path from Ansible Vault
+      copy:
+        dest: "{{app_path}}/config/master.key"
+        content: "{{master_key}}"
+
+    - name: bundle install Gems
+      become_user: "{{ app_user }}"
+      shell: "source /home/{{app_user}}/.rvm/scripts/rvm && RAILS_ENV=production bundle install"
+      args:
+        executable: /bin/bash
+        chdir: "{{app_path}}"
+
+    - name: create and migrate database and seed the data
+      become_user: "{{ app_user }}"
+      shell: |
+        source /home/{{app_user}}/.rvm/scripts/rvm && bin/rails db:setup RAILS_ENV=production
+      args:
+        executable: /bin/bash
+        chdir: "{{app_path}}"
+
+    - name: Install NVM # install the latest version of NVM
+      become_user: "{{app_user}}"
+      shell: "curl -sSL https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash"
+
+    - name: Install Node
+      become_user: "{{app_user}}"
+      shell: "source /home/{{app_user}}/.nvm/nvm.sh && nvm install {{node_version}}"
+      args:
+        executable: /bin/bash
+
+    - name: Node version
+      become_user: "{{app_user}}"
+      shell: "source /home/{{app_user}}/.nvm/nvm.sh && node -v"
+      register: nvm_status
+      args:
+        executable: /bin/bash
+    - debug:
+        msg: "Node Version: {{nvm_status.stdout}}"
+
+    - name: Install yarn
+      shell: "source /home/{{app_user}}/.nvm/nvm.sh && npm install --global yarn"
+      args:
+        executable: /bin/bash
+        chdir: "{{app_path}}"
+
+    - name: debug yarn version
+      shell: " source /home/{{app_user}}/.nvm/nvm.sh && yarn --version"
+      register: output
+      args:
+        executable: /bin/bash
+    - debug:
+        msg: "Yarn version: {{output.stdout}}"
+
+    - name: precompile assets
+      shell: " source /home/ubuntu/.nvm/nvm.sh && source /home/{{app_user}}/.rvm/scripts/rvm && bundle exec rake assets:precompile RAILS_ENV=production"
+      args:
+        executable: /bin/bash
+        chdir: "{{app_path}}"
+
+    - name: create shared folder for unicorn
+      file:
+        path: "{{item}}"
+        state: directory
+        owner: "{{app_user}}"
+        group: "{{app_user}}"
+      loop:
+        - "{{default_path}}/shared"
+        - "{{default_path}}/shared/pids"
+        - "{{default_path}}/shared/sockets"
+        - "{{default_path}}/shared/logs"
+
+    - name: Start Unicorn as detached mode
+      shell: " source /home/{{app_user}}/.rvm/scripts/rvm && unicorn -c {{app_path}}/config/unicorn.rb -E production -D"
+      args:
+        executable: /bin/bash
+
+    - name: Delete the Default nginx site configurations
+      file: path=/etc/nginx/sites-enabled/default
+        state=absent
+
+    - name: Configure nginx for production
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/sites-available/{{ app_name }}
+      notify: Restart Nginx
+
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/{{ app_name }}
+        dest: /etc/nginx/sites-enabled/{{ app_name }}
+        state: link
+      notify: Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
