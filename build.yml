@@ -104,20 +104,20 @@
         dest: "{{app_path}}/config/master.key"
         content: "{{master_key}}"
 
-    - name: bundle install Gems
-      become_user: "{{ app_user }}"
-      shell: "source /home/{{app_user}}/.rvm/scripts/rvm && RAILS_ENV=production bundle install"
-      args:
-        executable: /bin/bash
-        chdir: "{{app_path}}"
+    # - name: bundle install Gems
+    #   become_user: "{{ app_user }}"
+    #   shell: "source /home/{{app_user}}/.rvm/scripts/rvm && RAILS_ENV=production bundle install"
+    #   args:
+    #     executable: /bin/bash
+    #     chdir: "{{app_path}}"
 
-    - name: create and migrate database and seed the data
-      become_user: "{{ app_user }}"
-      shell: |
-        source /home/{{app_user}}/.rvm/scripts/rvm && bin/rails db:setup RAILS_ENV=production
-      args:
-        executable: /bin/bash
-        chdir: "{{app_path}}"
+    # - name: create and migrate database and seed the data
+    #   become_user: "{{ app_user }}"
+    #   shell: |
+    #     source /home/{{app_user}}/.rvm/scripts/rvm && bin/rails db:setup RAILS_ENV=production
+    #   args:
+    #     executable: /bin/bash
+    #     chdir: "{{app_path}}"
 
     - name: Install NVM # install the latest version of NVM
       become_user: "{{app_user}}"
@@ -152,28 +152,28 @@
     - debug:
         msg: "Yarn version: {{output.stdout}}"
 
-    - name: precompile assets
-      shell: " source /home/ubuntu/.nvm/nvm.sh && source /home/{{app_user}}/.rvm/scripts/rvm && bundle exec rake assets:precompile RAILS_ENV=production"
-      args:
-        executable: /bin/bash
-        chdir: "{{app_path}}"
+    # - name: precompile assets
+    #   shell: " source /home/ubuntu/.nvm/nvm.sh && source /home/{{app_user}}/.rvm/scripts/rvm && bundle exec rake assets:precompile RAILS_ENV=production"
+    #   args:
+    #     executable: /bin/bash
+    #     chdir: "{{app_path}}"
 
-    - name: create shared folder for unicorn
-      file:
-        path: "{{item}}"
-        state: directory
-        owner: "{{app_user}}"
-        group: "{{app_user}}"
-      loop:
-        - "{{default_path}}/shared"
-        - "{{default_path}}/shared/pids"
-        - "{{default_path}}/shared/sockets"
-        - "{{default_path}}/shared/logs"
+    # - name: create shared folder for unicorn
+    #   file:
+    #     path: "{{item}}"
+    #     state: directory
+    #     owner: "{{app_user}}"
+    #     group: "{{app_user}}"
+    #   loop:
+    #     - "{{default_path}}/shared"
+    #     - "{{default_path}}/shared/pids"
+    #     - "{{default_path}}/shared/sockets"
+    #     - "{{default_path}}/shared/logs"
 
-    - name: Start Unicorn as detached mode
-      shell: " source /home/{{app_user}}/.rvm/scripts/rvm && unicorn -c {{app_path}}/config/unicorn.rb -E production -D"
-      args:
-        executable: /bin/bash
+    # - name: Start Unicorn as detached mode
+    #   shell: " source /home/{{app_user}}/.rvm/scripts/rvm && unicorn -c {{app_path}}/config/unicorn.rb -E production -D"
+    #   args:
+    #     executable: /bin/bash
 
     - name: Delete the Default nginx site configurations
       file: path=/etc/nginx/sites-enabled/default
