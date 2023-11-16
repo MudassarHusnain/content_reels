@@ -122,10 +122,10 @@ jobs:
       - run:
           name: Deploy to AWS EC2 VM
           command: |
-            VM_HOST = 'ec2-23-23-33-210.compute-1.amazonaws.com'
-            VM_USER = 'ubuntu'
-            VM_password = 'ubuntu'
-            BRANCH = main
+            # VM_HOST = 'ec2-23-23-33-210.compute-1.amazonaws.com'
+            # VM_USER = 'ubuntu'
+            # VM_password = 'ubuntu'
+            # BRANCH = main
             
             # # SSH into the Azure VM
             sshpass -p $VM_password ssh -o StrictHostKeyChecking=no  ubuntu@ec2-23-23-33-210.compute-1.amazonaws.com
