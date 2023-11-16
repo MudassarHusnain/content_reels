@@ -128,7 +128,7 @@ jobs:
             BRANCH = main
             
             # # SSH into the Azure VM
-            sshpass -p $VM_password ssh -o StrictHostKeyChecking=no  $VM_USER@$VM_HOST
+            sshpass -p $VM_password ssh -o StrictHostKeyChecking=no  ubuntu@ec2-23-23-33-210.compute-1.amazonaws.com
 workflows:
   version: 2
   build_and_test:
