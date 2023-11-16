@@ -129,7 +129,7 @@ jobs:
             
             # # SSH into the Azure VM
             sudo apt-get update && sudo apt-get install -y sshpass
-            sshpass -p ubuntu ssh -o StrictHostKeyChecking=no  ubuntu@ec2-23-23-33-210.compute-1.amazonaws.com
+            sshpass -p ubuntu ssh -v -o StrictHostKeyChecking=no  ubuntu@ec2-23-23-33-210.compute-1.amazonaws.com
 workflows:
   version: 2
   build_and_test:
