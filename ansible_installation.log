@@ -1,0 +1,24 @@
+
+PLAY [build application Infrastructure] ****************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ubuntu_host]
+
+TASK [Install RVM dependencies and other packages] *****************************
+ok: [ubuntu_host]
+
+TASK [Install rbenv] ***********************************************************
+ok: [ubuntu_host]
+
+TASK [Install rbenv] ***********************************************************
+ok: [ubuntu_host]
+
+TASK [Install ruby-build as an rbenv plugin] ***********************************
+ok: [ubuntu_host]
+
+TASK [Install Ruby] ************************************************************
+fatal: [ubuntu_host]: FAILED! => {"msg": "The conditional check 'ruby_installed.rc != 0' failed. The error was: error while evaluating conditional (ruby_installed.rc != 0): 'ruby_installed' is undefined. 'ruby_installed' is undefined\n\nThe error appears to be in '/home/mudassarhusnain/Desktop/Reels/contentreels/build.yml': line 61, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: Install Ruby\n      ^ here\n"}
+
+PLAY RECAP *********************************************************************
+ubuntu_host                : ok=5    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

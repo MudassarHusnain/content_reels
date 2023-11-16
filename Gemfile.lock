@@ -109,7 +109,7 @@ GEM
     chronic (0.10.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
-    date (3.3.3)
+    date (3.3.4)
     declarative (0.0.20)
     delayed_job (4.1.11)
       activesupport (>= 3.0, < 8.0)
@@ -222,7 +222,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.3.0)
-    net-imap (0.4.2)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
